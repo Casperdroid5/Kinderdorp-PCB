@@ -10956,7 +10956,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Capacitor_Tantalum_SMD:CP_EIA-1608-10_AVX-L"
+		(property "Footprint" "MountingHole:MountingHole_2.1mm"
 			(at 41.91 87.63 0)
 			(effects
 				(font
