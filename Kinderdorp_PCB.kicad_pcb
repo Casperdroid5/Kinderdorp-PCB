@@ -981,7 +981,7 @@
 			(uuid "35329490-3dd8-417d-9770-78e51806727f")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -1340,13 +1340,13 @@
 		(embedded_fonts no)
 		(model "${KICAD9_3DMODEL_DIR}/OptoDevice.3dshapes/R_LDR_5.1x4.3mm_P3.4mm_Vertical.wrl"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 0 -2.2)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -1655,15 +1655,15 @@
 			(uuid "3977e1ca-5b38-444c-8a18-e4abb210fef0")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/SOT-223-4P_L6.5-W3.5-H1.6-LS7.0-P2.30.wrl"
+		(model "${KIPRJMOD}/packages3D/SOT-223-4P_L6.5-W3.5-H1.6-LS7.0-P2.30.step"
 			(offset
-				(xyz -941.76 660.4 -0)
+				(xyz 0 0 -0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 180)
+				(xyz -0 -0 180)
 			)
 		)
 	)
@@ -2499,7 +2499,7 @@
 			(uuid "f3ffd0b9-da00-4462-80ba-cc4932bfc9aa")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -3117,7 +3117,7 @@
 			(uuid "477275f8-595b-47f3-9594-b590d0006a4f")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -4629,7 +4629,7 @@
 			(uuid "56594fc3-626a-4b3b-8ee6-02fd5f588ef8")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -4644,11 +4644,11 @@
 	(footprint "easyeda2kicad:KEY-SMD_4P-L6.2-W6.2-P4.50-LS9.0"
 		(layer "F.Cu")
 		(uuid "43503648-47c4-4b4d-b6a4-c732a076ea06")
-		(at 83.225 83.08)
+		(at 107.45 84.6)
 		(property "Reference" "KEY7"
 			(at 0 -4 0)
 			(layer "F.SilkS")
-			(uuid "96897390-bce0-40ae-b9be-e694e6905aaf")
+			(uuid "7ba6cd53-c877-420c-b00d-b774436c486b")
 			(effects
 				(font
 					(size 1 1)
@@ -4659,7 +4659,8 @@
 		(property "Value" "DTSM-61R-V-T/R"
 			(at 0 6.25 0)
 			(layer "F.Fab")
-			(uuid "7f7350ce-2a14-4a90-9964-9e49d24a064a")
+			(hide yes)
+			(uuid "2d306f1d-376d-49f5-b5c8-f4b438565be5")
 			(effects
 				(font
 					(size 1 1)
@@ -4671,7 +4672,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "7842ee3b-2fda-447c-82b4-bd7849349a80")
+			(uuid "85f5a49e-b6fa-422d-b42a-e8933b9b6cb3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4683,7 +4684,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0129f5b1-b130-42f7-9a81-614720935d68")
+			(uuid "83e1d86e-9c8b-4794-84b0-457f4a474cb4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4709,51 +4710,51 @@
 		(sheetfile "Kinderdorp_PCB.kicad_sch")
 		(attr smd)
 		(fp_circle
-			(center -0.2 0)
-			(end 0.55 0)
+			(center 0.01 -0.01)
+			(end 0.76 -0.01)
 			(stroke
 				(width 0.25)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "316c16f6-a2dc-428f-8af5-17f4c8294883")
+			(uuid "a4c680a1-e36b-4bde-ab96-dcb800265c4e")
 		)
 		(fp_circle
-			(center -0.2 0)
-			(end 1.55 0)
+			(center 0.01 -0.01)
+			(end 1.76 -0.01)
 			(stroke
 				(width 0.25)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.SilkS")
-			(uuid "d93565b5-7426-475f-80f7-c6c5e0c6f462")
+			(uuid "ffb734c3-713a-4ec1-b225-ab90a8b0f855")
 		)
 		(fp_rect
-			(start -5 -3.25)
-			(end 4.5 3.25)
+			(start -4.59 -2.93)
+			(end 4.51 3.07)
 			(stroke
 				(width 0.05)
 				(type default)
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "98e0408c-06f2-41b2-a72b-2bee3eae52fa")
+			(uuid "f222459b-c210-45d7-a7c0-3b74bf03220a")
 		)
 		(fp_circle
-			(center -4.5 -2.85)
-			(end -4.47 -2.85)
+			(center -4.09 -2.86)
+			(end -4.06 -2.86)
 			(stroke
 				(width 0.06)
 				(type solid)
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "6b68f85b-d680-4c04-b68c-bffd94663f9d")
+			(uuid "ac58af1d-0554-4f90-afd5-41246aeb7854")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0.25 0)
+			(at 0.41 0.24 0)
 			(layer "F.Fab")
 			(uuid "1f5b6318-ca2f-4ddc-b48f-aef78b555f1f")
 			(effects
@@ -4764,7 +4765,7 @@
 			)
 		)
 		(pad "1" smd rect
-			(at -4 -2 180)
+			(at -3.59 -2.01 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 1 "GND")
@@ -4773,7 +4774,7 @@
 			(uuid "74ab18f2-1df1-42f8-9466-c7d2df938841")
 		)
 		(pad "2" smd rect
-			(at 3.5 -2 180)
+			(at -3.59 2.19 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 1 "GND")
@@ -4782,7 +4783,7 @@
 			(uuid "dbbefcd7-f134-4d6d-b6dd-24f261b9d128")
 		)
 		(pad "3" smd rect
-			(at -4 2.2 180)
+			(at 3.51 -2.01 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 25 "GPIO4")
@@ -4791,7 +4792,7 @@
 			(uuid "a0484a6f-5d9e-46ef-afc3-ea7cd2e8c7c6")
 		)
 		(pad "4" smd rect
-			(at 3.5 2.2 180)
+			(at 3.51 2.19 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 25 "GPIO4")
@@ -4800,15 +4801,15 @@
 			(uuid "dcb4bd36-1ce7-4620-b020-6990e9055b9e")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-SMD_4P-L6.2-W6.2-H5.0-LS9.0-P4.5.wrl"
+		(model "${KIPRJMOD}/packages3D/Tactile_SMD_5x5mm.STEP"
 			(offset
 				(xyz 0 -0 -0)
 			)
 			(scale
-				(xyz 1 1 1)
+				(xyz 1.1 1.1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -5670,7 +5671,7 @@
 			(uuid "9b70111c-0500-4c9f-a0b9-692ed3ff4f13")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -6213,6 +6214,17 @@
 			(uuid "b7f39103-783d-40b3-aed7-573f9f9a8d08")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/packages3D/Buzzer.STEP"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -90)
+			)
+		)
 	)
 	(footprint "easyeda2kicad:SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR"
 		(layer "F.Cu")
@@ -6520,15 +6532,15 @@
 			(uuid "2b6dd02b-6378-4d23-a81e-5482973d2f3c")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/SOT-23-3P_L2.9-W1.3-H1.0-LS2.4-P0.95.wrl"
+		(model "${KIPRJMOD}/packages3D/SOT-23.step"
 			(offset
-				(xyz -861.57 843.28 -0)
+				(xyz 0 0 -0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 180)
+				(xyz -0 -0 180)
 			)
 		)
 	)
@@ -6881,7 +6893,7 @@
 			(uuid "0a9284b2-2c98-4c4e-9ae6-951befc9369c")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/BAT-SMD_MY-2032-12.wrl"
+		(model "${KICAD9_3RD_PARTY}/BAT-SMD_MY-2032-12.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -7818,15 +7830,15 @@
 			(uuid "cff33684-56dd-40c2-b3a7-415f028d3b35")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/TYPE-C-SMD_TYPE-C-6P_5.wrl"
+		(model "${KIPRJMOD}/packages3D/TYPE-C-SMD_TYPE-C-6P_5.step"
 			(offset
-				(xyz 0 -1.18 1)
+				(xyz 0 -1.18 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -7988,7 +8000,7 @@
 			(uuid "586c159d-75d7-43d6-b601-bcc24275428a")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/SMA_L4.4-W2.6-LS5.0-RD.wrl"
+		(model "${KIPRJMOD}/packages3D/SMA_L4.4-W2.6-LS5.0-RD.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -9078,7 +9090,7 @@
 			(uuid "c3285868-dbec-4f44-b21a-13d191239b4d")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -9593,7 +9605,7 @@
 			(uuid "103c486c-60cb-4a5a-9bd1-72c07c4cb226")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -9610,7 +9622,7 @@
 		(uuid "aae8ad20-bd70-475b-9605-55a8959e0d40")
 		(at 83.225 91.13)
 		(property "Reference" "KEY8"
-			(at 0 -3.75 0)
+			(at 0 -3.83 0)
 			(layer "F.SilkS")
 			(uuid "e61154e2-820a-4d2c-b175-ed2e35a644cf")
 			(effects
@@ -9621,7 +9633,7 @@
 			)
 		)
 		(property "Value" "DTSM-61R-V-T/R"
-			(at 0 6.5 0)
+			(at 0.36 6.48 0)
 			(layer "F.Fab")
 			(uuid "b5812f51-b3d0-4205-b358-2388c61c7213")
 			(effects
@@ -9673,8 +9685,8 @@
 		(sheetfile "Kinderdorp_PCB.kicad_sch")
 		(attr smd)
 		(fp_circle
-			(center -0.2 0)
-			(end 0.55 0)
+			(center -0.04 -0.02)
+			(end 0.71 -0.02)
 			(stroke
 				(width 0.25)
 				(type solid)
@@ -9684,8 +9696,8 @@
 			(uuid "fe15b21b-31f9-49a7-82ad-877578b55799")
 		)
 		(fp_circle
-			(center -0.2 0)
-			(end 1.55 0)
+			(center -0.04 -0.02)
+			(end 1.71 -0.02)
 			(stroke
 				(width 0.25)
 				(type solid)
@@ -9695,8 +9707,8 @@
 			(uuid "de2b9dff-e3c5-48d7-b3f0-90ce77577db2")
 		)
 		(fp_rect
-			(start -5 -3.25)
-			(end 4.5 3.25)
+			(start -4.64 -2.94)
+			(end 4.46 3.06)
 			(stroke
 				(width 0.05)
 				(type default)
@@ -9706,8 +9718,8 @@
 			(uuid "ee72a771-583c-4c23-a0e1-38b98283e2e2")
 		)
 		(fp_circle
-			(center -4.5 -2.85)
-			(end -4.47 -2.85)
+			(center -4.14 -2.87)
+			(end -4.11 -2.87)
 			(stroke
 				(width 0.06)
 				(type solid)
@@ -9717,7 +9729,7 @@
 			(uuid "b42ce10e-2d61-42dd-9e0d-c64edf36a161")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0.25 0)
+			(at 0.36 0.23 0)
 			(layer "F.Fab")
 			(uuid "8cddea57-ea75-4134-b62e-d4d22da011c0")
 			(effects
@@ -9728,7 +9740,7 @@
 			)
 		)
 		(pad "1" smd rect
-			(at -4 -2 180)
+			(at -3.64 -2.02 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 1 "GND")
@@ -9737,7 +9749,7 @@
 			(uuid "ccdde7b9-1c7b-408a-bb51-4bde334b3acd")
 		)
 		(pad "2" smd rect
-			(at 3.5 -2 180)
+			(at -3.64 2.18 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 1 "GND")
@@ -9746,7 +9758,7 @@
 			(uuid "57c39f76-4bd0-4775-832e-1cb3d7ef8425")
 		)
 		(pad "3" smd rect
-			(at -4 2.2 180)
+			(at 3.46 -2.02 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 26 "GPIO5")
@@ -9755,7 +9767,7 @@
 			(uuid "d18ff4bf-7b82-4838-9ae6-bd1db9b23533")
 		)
 		(pad "4" smd rect
-			(at 3.5 2.2 180)
+			(at 3.46 2.18 180)
 			(size 1.6 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 26 "GPIO5")
@@ -9764,15 +9776,15 @@
 			(uuid "8a7b20fd-3711-4811-8c6f-a915570b0dc5")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/KEY-SMD_4P-L6.2-W6.2-H5.0-LS9.0-P4.5.wrl"
+		(model "${KIPRJMOD}/packages3D/Tactile_SMD_5x5mm.STEP"
 			(offset
 				(xyz 0 -0 -0)
 			)
 			(scale
-				(xyz 1 1 1)
+				(xyz 1.1 1.1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -10544,7 +10556,7 @@
 			(uuid "9339a33d-5f07-4014-bcb0-f9dc6de1aeb5")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/BAT-SMD_MY-2032-12.wrl"
+		(model "${KICAD9_3RD_PARTY}/BAT-SMD_MY-2032-12.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
@@ -11281,7 +11293,7 @@
 			(uuid "785a1304-d928-4ab5-b320-12bf9a7f2af5")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/BULETM-SMD_ESPRESSIF_ESP32-C3-WROOM-02-N4-4MB.wrl"
+		(model "${KIPRJMOD}/packages3D/BULETM-SMD_ESPRESSIF_ESP32-C3-WROOM-02-N4-4MB.step"
 			(offset
 				(xyz -0 3.1 -0)
 			)
@@ -13081,7 +13093,7 @@
 			(uuid "e2c7eee3-a5d0-4aed-b8d3-5bf582495434")
 		)
 		(embedded_fonts no)
-		(model "${EASYEDA2KICAD}/easyeda2kicad.3dshapes/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.wrl"
+		(model "${KIPRJMOD}/packages3D/LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB.step"
 			(offset
 				(xyz 0 -0 -0)
 			)
