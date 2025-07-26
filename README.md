@@ -1,4 +1,4 @@
-# Kinderdorp PCB 🎨✨
+# Kinderdorp PCB 👍
 
 An interactive educational PCB designed for children to learn electronics through hands-on experimentation with LEDs, sensors, and programming.
 
