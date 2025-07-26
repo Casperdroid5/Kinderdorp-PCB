@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "Kinderdorp Printplaat")
-		(date "2025-05-12")
+		(date "2025-07-26")
 		(rev "V1.0")
 		(comment 1 "Casper R. Tak")
 	)
@@ -5315,56 +5315,6 @@
 		)
 		(uuid "fe68dec8-3cbe-4db5-8c3a-6ba23657a2dd")
 	)
-	(label "Net-(D2-A)"
-		(at 63.5 74.93 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "4836bbf7-d1af-4c07-b142-e9d67b9f80d8")
-	)
-	(label "Net-(U5-TXD)"
-		(at 168.91 93.98 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "51023fcb-fcad-4622-a205-21b68294c178")
-	)
-	(label "Net-(D2-A)"
-		(at 63.5 74.93 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "577b4314-dd3a-4557-bea1-7ba7da13f5f0")
-	)
-	(label "Net-(U5-RXD)"
-		(at 168.91 96.52 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7c0c19fd-e3f5-4d49-98e5-4e97f972e33a")
-	)
-	(label "Net-(D2-A)"
-		(at 63.5 74.93 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e33f6500-ba77-4975-9ff3-f5c1971df7d8")
-	)
 	(global_label "GPIO6"
 		(shape input)
 		(at 189.23 88.9 0)
@@ -6505,7 +6455,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1387d804-3a48-436e-8b3b-38d7d2da4d78")
-		(property "Reference" "TP1"
+		(property "Reference" "BATT-1"
 			(at 36.068 96.52 90)
 			(effects
 				(font
@@ -6554,7 +6504,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP1")
+					(reference "BATT-1")
 					(unit 1)
 				)
 			)
@@ -6571,7 +6521,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13da2f1e-5781-494c-ab3d-bb731202090a")
-		(property "Reference" "TP4"
+		(property "Reference" "USB-"
 			(at 125.73 72.7074 0)
 			(effects
 				(font
@@ -6694,7 +6644,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP4")
+					(reference "USB-")
 					(unit 1)
 				)
 			)
@@ -8847,7 +8797,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "574e564e-58ca-4372-af0c-cb8cbe35161b")
-		(property "Reference" "TP3"
+		(property "Reference" "USB+"
 			(at 130.81 66.3574 0)
 			(effects
 				(font
@@ -8970,7 +8920,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP3")
+					(reference "USB+")
 					(unit 1)
 				)
 			)
@@ -11318,7 +11268,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bf1987c0-5690-46a4-9c70-8ade78124c43")
-		(property "Reference" "H1"
+		(property "Reference" "BATTPACK1"
 			(at 36.83 82.55 0)
 			(effects
 				(font
@@ -11364,7 +11314,7 @@
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "H1")
+					(reference "BATTPACK1")
 					(unit 1)
 				)
 			)
@@ -13527,7 +13477,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ec94b8a8-c282-4b3b-9042-1436b00397a8")
-		(property "Reference" "TP2"
+		(property "Reference" "BATT+1"
 			(at 39.878 71.12 90)
 			(effects
 				(font
@@ -13576,7 +13526,7 @@
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP2")
+					(reference "BATT+1")
 					(unit 1)
 				)
 			)
