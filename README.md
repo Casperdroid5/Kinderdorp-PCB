@@ -2,8 +2,8 @@
 
 An interactive educational PCB designed for children to learn electronics through hands-on experimentation with LEDs, sensors, and programming.
 
-![Kinderdorp PCB Front](media/kinderdorp_pcb_front.png)
-![Kinderdorp PCB Back](media/kinderdorp_pcb_back.png)
+![Kinderdorp PCB Top](media/bottom.jpg)
+![Kinderdorp PCB Bottom](media/top.jpg)
 
 ## 📋 Overview
 
