@@ -75,7 +75,7 @@ The 8 WS2812B LEDs are connected in series:
 
 ### Hardware Setup
 1. **Power the board** via USB-C or install batteries
-2. **Connect** USB-C cable for programming
+2. **Connect** USE the breakout pads USB+ and USB- or UART to program the board
 3. **Install** any additional components if using expansion header
 
 ### Basic Programming Example
@@ -150,12 +150,7 @@ float getBatteryVoltage() {
 ### Battery Installation
 - **Option 1**: Install 2x CR2032 coin cells in BT1 and BT2
 - **Option 2**: Connect 3x AAA battery pack to BATTPACK1
-- **Do not** install both battery options simultaneously
-
-### Component Orientation
-- Ensure **WS2812B LEDs** are oriented correctly (check pin 1 marker)
-- **ESP32 module** should be flush against the PCB
-- **Battery holders** should click securely into place
+- **Do not** install both battery options simultaneously (should not be possible if PCB is asssembled correctly)
 
 ## 🎨 Design Features
 
@@ -165,33 +160,6 @@ The PCB includes playful design elements:
 - **Clear labeling** for educational purposes
 - **Robust construction** for classroom use
 
-## 📦 Bill of Materials (BOM)
-
-| Reference | Component | Package | Quantity |
-|-----------|-----------|---------|----------|
-| U2 | ESP32-C3-WROOM-02-N4 | SMD | 1 |
-| LED1-LED8 | WS2812B | 5050 | 8 |
-| BUTTON1-2 | DTSM-61R-V-T/R | SMD | 2 |
-| U1 | AMS1117-3.3 | SOT-223 | 1 |
-| LS1 | KSSGK4B16-20 | SMD | 1 |
-| BT1-BT2 | CR2032 Holder | Through-hole | 2 |
-| USB1 | USB-C Connector | SMD | 1 |
-| C1,C3 | 47µF 10V | SMD | 2 |
-| C2 | 100nF 50V | SMD | 1 |
-| C4 | 10µF 25V | SMD | 1 |
-| R1-R9 | Various resistors | 0805 | 9 |
-| Q1 | 2N7002 MOSFET | SOT-23 | 1 |
-| D1 | 1N5819 Diode | SOD-123 | 1 |
-| LDR1 | LDR07 | Through-hole | 1 |
-
-## 🤝 Contributing
-
-We welcome contributions to improve the Kinderdorp PCB project:
-- **Hardware improvements** and optimizations
-- **Software examples** and tutorials  
-- **Educational content** and lesson plans
-- **Bug reports** and feature requests
-
 ## 📄 License
 
 This project is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute for educational purposes.
@@ -199,15 +167,7 @@ This project is released under the [MIT License](LICENSE). Feel free to use, mod
 ## 👨‍💻 Author
 
 **Casper R. Tak**
-- GitHub: [Link to your profile]
-- Project Repository: [GitHub link]
-
-## 📞 Support
-
-For questions, issues, or educational partnerships:
-- Open an issue on GitHub
-- Contact: [your-email@example.com]
 
 ---
 
-*Kinderdorp PCB - Making electronics fun and accessible for young minds! 🌟*
+*Kinderdorp PCB - Making electronics fun and accessible for young (and older) minds! 🌟*
