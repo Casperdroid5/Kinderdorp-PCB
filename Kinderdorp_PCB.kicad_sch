@@ -5315,6 +5315,56 @@
 		)
 		(uuid "fe68dec8-3cbe-4db5-8c3a-6ba23657a2dd")
 	)
+	(label "Net-(D2-A)"
+		(at 63.5 74.93 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4836bbf7-d1af-4c07-b142-e9d67b9f80d8")
+	)
+	(label "Net-(U5-TXD)"
+		(at 168.91 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "51023fcb-fcad-4622-a205-21b68294c178")
+	)
+	(label "Net-(D2-A)"
+		(at 63.5 74.93 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "577b4314-dd3a-4557-bea1-7ba7da13f5f0")
+	)
+	(label "Net-(U5-RXD)"
+		(at 168.91 96.52 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7c0c19fd-e3f5-4d49-98e5-4e97f972e33a")
+	)
+	(label "Net-(D2-A)"
+		(at 63.5 74.93 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e33f6500-ba77-4975-9ff3-f5c1971df7d8")
+	)
 	(global_label "GPIO6"
 		(shape input)
 		(at 189.23 88.9 0)
@@ -5918,8 +5968,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "03158bf5-3bf8-49af-91a1-0f1a419f5650")
-		(property "Reference" "#PWR0151"
+		(property "Reference" "#PWR021"
 			(at 196.85 58.42 0)
 			(effects
 				(font
@@ -5929,12 +5980,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 195.072 50.8 0)
+			(at 196.85 50.8 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -5970,7 +6020,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0151")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -5986,7 +6036,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "063a63fa-d996-4d67-9bf6-3bacaf53f77b")
-		(property "Reference" "D10"
+		(property "Reference" "LED1"
 			(at 170.18 127.5648 0)
 			(effects
 				(font
@@ -6172,7 +6222,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D10")
+					(reference "LED1")
 					(unit 1)
 				)
 			)
@@ -6187,8 +6237,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "0b0be8de-5611-421e-8df5-f95ef3a434b3")
-		(property "Reference" "#PWR0160"
+		(property "Reference" "#PWR07"
 			(at 102.87 43.815 0)
 			(effects
 				(font
@@ -6199,12 +6250,11 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 105.918 42.164 0)
+			(at 105.41 41.91 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
@@ -6241,7 +6291,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0160")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -6255,8 +6305,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "0b0fd310-cfa0-4cf4-9691-75bdcb302ff1")
-		(property "Reference" "#PWR0152"
+		(property "Reference" "#PWR022"
 			(at 196.85 73.66 0)
 			(effects
 				(font
@@ -6266,12 +6317,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 195.834 70.866 0)
+			(at 196.85 71.12 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6307,7 +6357,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0152")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -6321,8 +6371,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "0ff99518-71d5-4433-8963-3ffb2fde0c03")
-		(property "Reference" "#PWR0155"
+		(property "Reference" "#PWR026"
 			(at 227.33 96.52 0)
 			(effects
 				(font
@@ -6332,12 +6383,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 226.314 93.726 0)
+			(at 227.33 93.98 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -6373,7 +6423,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0155")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -6389,7 +6439,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "104ff3df-a7e0-4777-823a-6682bdb2ee19")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR011"
 			(at 142.24 78.74 0)
 			(effects
 				(font
@@ -6439,7 +6489,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR082")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -6455,8 +6505,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1387d804-3a48-436e-8b3b-38d7d2da4d78")
-		(property "Reference" "TP7"
-			(at 36.068 95.25 90)
+		(property "Reference" "TP1"
+			(at 36.068 96.52 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6504,7 +6554,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP7")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -6521,7 +6571,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13da2f1e-5781-494c-ab3d-bb731202090a")
-		(property "Reference" "TP8"
+		(property "Reference" "TP4"
 			(at 125.73 72.7074 0)
 			(effects
 				(font
@@ -6644,7 +6694,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP8")
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -6661,7 +6711,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "188e77b8-d396-4389-81bc-0730f5f8eb3e")
-		(property "Reference" "R12"
+		(property "Reference" "R6"
 			(at 149.86 128.27 90)
 			(effects
 				(font
@@ -6812,7 +6862,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R12")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -6826,9 +6876,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "1faf9495-e536-49ad-8822-253ccb1332f9")
-		(property "Reference" "BT7"
-			(at 49.53 93.9799 90)
+		(property "Reference" "BT2"
+			(at 49.53 94.6149 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6837,7 +6888,7 @@
 			)
 		)
 		(property "Value" "MY-2032-12"
-			(at 49.53 96.5199 90)
+			(at 49.53 95.8849 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6890,7 +6941,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BT7")
+					(reference "BT2")
 					(unit 1)
 				)
 			)
@@ -6907,7 +6958,7 @@
 		(fields_autoplaced yes)
 		(uuid "227fc755-ce95-4ec2-ba4c-2f982635e5af")
 		(property "Reference" "USB1"
-			(at 49.53 21.59 0)
+			(at 49.53 22.86 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6999,22 +7050,22 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "23258ec8-4d05-4850-9c6e-5bb7635f73ff")
-		(property "Reference" "TP10"
-			(at 127 96.8374 0)
+		(property "Reference" "TP5"
+			(at 132.08 96.8374 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 127 98.1074 0)
+			(at 132.08 98.1074 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
@@ -7122,7 +7173,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP10")
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -7136,8 +7187,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "25ea4363-536c-43f9-9306-6e7af53215de")
-		(property "Reference" "#PWR0147"
+		(property "Reference" "#PWR015"
 			(at 176.53 69.85 0)
 			(effects
 				(font
@@ -7147,12 +7199,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 177.8 67.31 0)
+			(at 176.53 67.31 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -7188,7 +7239,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0147")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -7202,8 +7253,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "26f7bf94-64e6-496c-ac43-e3707a52a0a9")
-		(property "Reference" "#PWR0153"
+		(property "Reference" "#PWR03"
 			(at 64.77 30.48 0)
 			(effects
 				(font
@@ -7213,12 +7265,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 63.754 27.686 0)
+			(at 64.77 27.94 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7254,7 +7305,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0153")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -7268,8 +7319,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "277bb182-0d7e-4100-9454-0036843d0aad")
-		(property "Reference" "#PWR0154"
+		(property "Reference" "#PWR025"
 			(at 227.33 80.01 0)
 			(effects
 				(font
@@ -7279,12 +7331,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 226.314 77.216 0)
+			(at 227.33 77.47 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7320,7 +7371,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0154")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -7336,7 +7387,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "287c6edd-aa77-4b39-9062-a1b521400dfd")
-		(property "Reference" "R16"
+		(property "Reference" "R5"
 			(at 144.78 69.2149 0)
 			(effects
 				(font
@@ -7490,7 +7541,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R16")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -7507,7 +7558,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2a2ef9c8-75b9-418b-bb45-899b8d47ade8")
-		(property "Reference" "C16"
+		(property "Reference" "C1"
 			(at 102.87 50.1585 0)
 			(effects
 				(font
@@ -7661,7 +7712,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "C16")
+					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -7676,8 +7727,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "2acf4935-f848-4c16-b80f-03bbd2005427")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR029"
 			(at 252.73 148.59 0)
 			(effects
 				(font
@@ -7687,12 +7739,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 253.746 145.796 0)
+			(at 252.73 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -7728,7 +7779,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR048")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -7742,9 +7793,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "2be2cab6-c1b1-4179-bd4a-22b1e2eb99c2")
-		(property "Reference" "F2"
-			(at 90.17 44.45 0)
+		(property "Reference" "F1"
+			(at 90.17 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7797,7 +7849,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "F2")
+					(reference "F1")
 					(unit 1)
 				)
 			)
@@ -7813,7 +7865,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2c9a2121-d4f1-4ccc-91b6-ce70b29d33dc")
-		(property "Reference" "R29"
+		(property "Reference" "R3"
 			(at 74.93 25.4 90)
 			(effects
 				(font
@@ -7946,7 +7998,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R29")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -7962,8 +8014,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "35536f34-4349-4430-8d32-7efd22fa722b")
-		(property "Reference" "BT6"
-			(at 49.53 83.8199 90)
+		(property "Reference" "BT1"
+			(at 49.53 84.4549 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7972,7 +8024,7 @@
 			)
 		)
 		(property "Value" "MY-2032-12"
-			(at 49.53 86.3599 90)
+			(at 49.53 85.7249 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8025,7 +8077,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BT6")
+					(reference "BT1")
 					(unit 1)
 				)
 			)
@@ -8040,8 +8092,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "35993ae4-4a7d-44ce-9187-5fe85820cc5d")
-		(property "Reference" "#PWR046"
+		(property "Reference" "#PWR016"
 			(at 176.53 148.59 0)
 			(effects
 				(font
@@ -8051,12 +8104,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 175.514 145.796 0)
+			(at 176.53 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -8092,7 +8144,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR046")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -8107,23 +8159,24 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "39587a7d-66e6-4ecb-bc3d-3d85fdbdbd27")
-		(property "Reference" "C22"
-			(at 199.39 63.4935 0)
+		(property "Reference" "C4"
+			(at 194.31 64.1285 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "10uF 25V"
-			(at 199.39 64.7635 0)
+			(at 194.31 65.3985 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
@@ -8263,7 +8316,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "C22")
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -8280,7 +8333,7 @@
 		(fields_autoplaced yes)
 		(uuid "402035d4-e0ff-4969-9f91-b23224aaff2e")
 		(property "Reference" "D1"
-			(at 68.835 68.58 0)
+			(at 68.835 69.85 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8354,8 +8407,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "42fdf625-21d7-4f64-9b4c-8b1a77b55c1a")
-		(property "Reference" "#PWR066"
+		(property "Reference" "#PWR032"
 			(at 266.7 90.805 0)
 			(effects
 				(font
@@ -8366,12 +8420,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 263.144 93.98 0)
+			(at 264.16 93.98 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
@@ -8408,7 +8461,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR066")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -8424,8 +8477,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "45a91344-ab32-4fc3-ba06-15e7fbc4dc05")
-		(property "Reference" "R27"
-			(at 199.39 57.1499 0)
+		(property "Reference" "R7"
+			(at 199.39 57.7849 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8434,7 +8487,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 199.39 58.4199 0)
+			(at 199.39 59.0549 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8578,7 +8631,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R27")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -8593,8 +8646,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "46af28a0-e649-4042-94e7-c91a1f08c641")
-		(property "Reference" "#PWR0101"
+		(property "Reference" "#PWR09"
 			(at 133.35 49.53 0)
 			(effects
 				(font
@@ -8604,12 +8658,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 131.826 42.418 0)
+			(at 133.35 41.91 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -8645,7 +8698,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0101")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -8661,7 +8714,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4713265f-dd50-4a9e-8e63-1aff20834f3e")
-		(property "Reference" "#PWR0150"
+		(property "Reference" "#PWR019"
 			(at 189.23 105.41 0)
 			(effects
 				(font
@@ -8711,7 +8764,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0150")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -8725,8 +8778,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "4ed62f3d-527a-41b7-81ed-c912801bacc2")
-		(property "Reference" "#PWR0146"
+		(property "Reference" "#PWR014"
 			(at 163.83 78.74 0)
 			(effects
 				(font
@@ -8736,7 +8790,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 163.83 75.946 0)
+			(at 163.83 76.2 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8776,7 +8830,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0146")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -8791,23 +8845,24 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "574e564e-58ca-4372-af0c-cb8cbe35161b")
-		(property "Reference" "TP4"
-			(at 125.984 66.548 0)
+		(property "Reference" "TP3"
+			(at 130.81 66.3574 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 125.984 67.818 0)
+			(at 130.81 67.6274 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
@@ -8915,7 +8970,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP4")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -8930,8 +8985,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "6266de52-d76d-4891-a002-f3e97e42200b")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR027"
 			(at 237.49 148.59 0)
 			(effects
 				(font
@@ -8941,12 +8997,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 236.474 145.796 0)
+			(at 237.49 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -8982,7 +9037,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR052")
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -8996,9 +9051,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "66196718-2b2c-4ddd-a65e-ddd914af4d62")
-		(property "Reference" "KEY1"
-			(at 227.33 63.5 0)
+		(property "Reference" "BUTTON1"
+			(at 227.33 64.77 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9006,7 +9062,7 @@
 			)
 		)
 		(property "Value" "DTSM-61R-V-T/R"
-			(at 227.33 64.77 0)
+			(at 227.33 66.04 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9064,7 +9120,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "KEY1")
+					(reference "BUTTON1")
 					(unit 1)
 				)
 			)
@@ -9078,9 +9134,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "676d6a12-bd5a-4c6b-84ef-81e597319acf")
-		(property "Reference" "R19"
-			(at 255.27 80.518 90)
+		(property "Reference" "R9"
+			(at 255.27 80.01 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9088,7 +9145,7 @@
 			)
 		)
 		(property "Value" "200"
-			(at 255.27 81.788 90)
+			(at 255.27 81.28 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9231,7 +9288,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R19")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -9247,7 +9304,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "67d97c46-5884-4234-a54d-c4aac163584c")
-		(property "Reference" "#PWR099"
+		(property "Reference" "#PWR01"
 			(at 45.72 106.68 0)
 			(effects
 				(font
@@ -9297,7 +9354,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR099")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -9311,8 +9368,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "6d7c9e99-74e2-4b5b-a68e-075b556dc82b")
-		(property "Reference" "#PWR059"
+		(property "Reference" "#PWR031"
 			(at 266.7 67.945 0)
 			(effects
 				(font
@@ -9323,12 +9381,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 262.636 66.294 0)
+			(at 264.16 66.04 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
@@ -9365,7 +9422,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR059")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -9381,7 +9438,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "701d7184-f905-4425-a6ab-42771fc5f745")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR02"
 			(at 62.23 105.41 0)
 			(effects
 				(font
@@ -9431,7 +9488,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR01")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -9445,9 +9502,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "7474d814-7cb4-4d32-b9b2-bce117939a4a")
-		(property "Reference" "C21"
-			(at 183.642 60.452 0)
+		(property "Reference" "C3"
+			(at 184.15 60.3185 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9456,7 +9514,7 @@
 			)
 		)
 		(property "Value" "47uF 10V"
-			(at 183.642 61.722 0)
+			(at 184.15 61.5885 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9600,7 +9658,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "C21")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -9615,8 +9673,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "793d7516-aa1c-4cb3-bd1b-b74b4173cf6e")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR013"
 			(at 161.29 148.59 0)
 			(effects
 				(font
@@ -9626,12 +9685,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 160.274 145.796 0)
+			(at 161.29 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -9667,7 +9725,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR045")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -9682,8 +9740,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "81514406-82ef-435e-9ea3-d04bf8ade973")
-		(property "Reference" "#PWR0100"
+		(property "Reference" "#PWR06"
 			(at 92.71 43.815 0)
 			(effects
 				(font
@@ -9694,12 +9753,11 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 95.758 42.164 0)
+			(at 95.25 41.91 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
@@ -9736,7 +9794,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0100")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -9750,8 +9808,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "82cb487f-0f50-477a-95b2-a021cf3fa8dc")
-		(property "Reference" "#PWR081"
+		(property "Reference" "#PWR010"
 			(at 142.24 60.96 0)
 			(effects
 				(font
@@ -9761,12 +9820,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 140.462 53.34 0)
+			(at 142.24 53.34 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -9802,7 +9860,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR081")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -9971,8 +10029,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "8c7b8196-6095-42fc-b43b-edc486bbaabb")
-		(property "Reference" "#PWR0149"
+		(property "Reference" "#PWR018"
 			(at 189.23 58.42 0)
 			(effects
 				(font
@@ -9982,12 +10041,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 190.754 50.8 0)
+			(at 189.23 50.8 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -10023,7 +10081,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0149")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -10038,8 +10096,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "8ede0100-b235-4fde-8ac1-936bc15646a4")
-		(property "Reference" "#PWR077"
+		(property "Reference" "#PWR012"
 			(at 158.75 120.015 0)
 			(effects
 				(font
@@ -10050,12 +10109,11 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 161.798 118.364 0)
+			(at 161.29 118.11 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
@@ -10092,7 +10150,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR077")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -10106,8 +10164,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "95520ab2-2e03-4a0d-8b2e-ecf25b6a1300")
-		(property "Reference" "#PWR0156"
+		(property "Reference" "#PWR04"
 			(at 64.77 48.26 0)
 			(effects
 				(font
@@ -10117,12 +10176,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 63.754 45.466 0)
+			(at 64.77 45.72 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -10158,7 +10216,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0156")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -10174,8 +10232,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "95bd51a3-e4f1-4af0-927b-e9f00967d31b")
-		(property "Reference" "R6"
-			(at 64.77 90.1699 0)
+		(property "Reference" "R2"
+			(at 64.77 90.8049 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10184,7 +10242,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 64.77 91.4399 0)
+			(at 64.77 92.0749 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10328,7 +10386,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R6")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -10346,7 +10404,7 @@
 		(fields_autoplaced yes)
 		(uuid "962c9df2-7fa6-4ea1-91ba-ea33ce664fef")
 		(property "Reference" "U2"
-			(at 179.07 69.85 0)
+			(at 179.07 71.12 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10354,7 +10412,7 @@
 			)
 		)
 		(property "Value" "ESP32-C3-WROOM-02-N4(4MB)"
-			(at 179.07 71.12 0)
+			(at 179.07 72.39 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10544,8 +10602,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "97ef014f-3f73-4736-9f36-d58feac40f06")
-		(property "Reference" "R10"
-			(at 144.78 59.6899 0)
+		(property "Reference" "LDR1"
+			(at 144.78 60.3249 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10554,7 +10612,7 @@
 			)
 		)
 		(property "Value" "LDR07"
-			(at 144.78 62.2299 0)
+			(at 144.78 61.5949 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10598,7 +10656,7 @@
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R10")
+					(reference "LDR1")
 					(unit 1)
 				)
 			)
@@ -10614,7 +10672,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "aab542d3-7e28-47ca-9dec-90a8520934b4")
-		(property "Reference" "D12"
+		(property "Reference" "LED3"
 			(at 200.66 127.5648 0)
 			(effects
 				(font
@@ -10800,7 +10858,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D12")
+					(reference "LED3")
 					(unit 1)
 				)
 			)
@@ -10970,7 +11028,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "af3c47a6-7709-4ac2-b422-6eb93151821b")
-		(property "Reference" "D11"
+		(property "Reference" "LED2"
 			(at 185.42 127.5648 0)
 			(effects
 				(font
@@ -11156,7 +11214,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D11")
+					(reference "LED2")
 					(unit 1)
 				)
 			)
@@ -11172,8 +11230,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b272de1f-461a-407d-ac97-0792bd31eaf9")
-		(property "Reference" "J1"
-			(at 261.62 39.3699 0)
+		(property "Reference" "HDR1"
+			(at 261.62 40.0049 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -11182,7 +11240,7 @@
 			)
 		)
 		(property "Value" "Conn_01x08"
-			(at 261.62 41.9099 0)
+			(at 261.62 41.2749 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -11244,7 +11302,7 @@
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "J1")
+					(reference "HDR1")
 					(unit 1)
 				)
 			)
@@ -11258,23 +11316,22 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "bf1987c0-5690-46a4-9c70-8ade78124c43")
 		(property "Reference" "H1"
-			(at 34.29 86.3599 0)
+			(at 36.83 82.55 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Value" "Batteryplaceholder"
-			(at 34.29 88.8999 0)
+			(at 36.83 83.82 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_2.1mm"
@@ -11323,7 +11380,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c2f5c2b3-81fb-4dde-b072-dceb113711d1")
-		(property "Reference" "D14"
+		(property "Reference" "LED5"
 			(at 231.14 127.5648 0)
 			(effects
 				(font
@@ -11509,7 +11566,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D14")
+					(reference "LED5")
 					(unit 1)
 				)
 			)
@@ -11523,8 +11580,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "c47aa3af-5666-47a4-8ca3-d72d56c6f675")
-		(property "Reference" "#PWR085"
+		(property "Reference" "#PWR030"
 			(at 254 35.56 0)
 			(effects
 				(font
@@ -11534,12 +11592,11 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 252.222 27.94 0)
+			(at 254 27.94 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -11575,7 +11632,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR085")
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -11590,8 +11647,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "c6581347-e18d-4111-88ac-78bf166a4a2f")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR024"
 			(at 222.25 148.59 0)
 			(effects
 				(font
@@ -11601,12 +11659,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 221.234 145.796 0)
+			(at 222.25 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -11642,7 +11699,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR051")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -11658,7 +11715,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c79baa0f-cf54-420d-b836-4b3cbcec9410")
-		(property "Reference" "D13"
+		(property "Reference" "LED4"
 			(at 215.9 127.5648 0)
 			(effects
 				(font
@@ -11844,7 +11901,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D13")
+					(reference "LED4")
 					(unit 1)
 				)
 			)
@@ -11859,8 +11916,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "ca2a621b-298d-46df-a9a2-0bb33c6de0a9")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR020"
 			(at 191.77 148.59 0)
 			(effects
 				(font
@@ -11870,12 +11928,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 190.754 145.796 0)
+			(at 191.77 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -11911,7 +11968,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR049")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -11925,9 +11982,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "cbc5698f-4976-4648-b9c6-ad3413afd89c")
-		(property "Reference" "TP11"
-			(at 195.326 99.568 0)
+		(property "Reference" "TP7"
+			(at 195.58 99.3774 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -11936,7 +11994,7 @@
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 195.326 100.838 0)
+			(at 195.58 100.6474 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -12049,7 +12107,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP11")
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -12064,8 +12122,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "d23fd0b5-0f4e-489a-b354-2c4061811104")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR023"
 			(at 207.01 148.59 0)
 			(effects
 				(font
@@ -12075,12 +12134,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 205.994 145.796 0)
+			(at 207.01 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -12116,7 +12174,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR050")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -12131,9 +12189,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "d5d0a1a0-0238-4656-a075-53ada3044d55")
-		(property "Reference" "C20"
-			(at 174.498 60.452 0)
+		(property "Reference" "C2"
+			(at 173.99 60.3312 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -12142,7 +12201,7 @@
 			)
 		)
 		(property "Value" "100nF 50V"
-			(at 174.498 61.722 0)
+			(at 173.99 61.6012 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -12323,7 +12382,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "C20")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -12339,22 +12398,20 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d87c229f-9373-450b-b654-d095a953865e")
-		(property "Reference" "D21"
-			(at 249.6119 124.46 0)
+		(property "Reference" "LED7"
+			(at 261.62 127.5648 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 249.6119 125.73 0)
+			(at 261.62 128.8348 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" "easyeda2kicad:LED-SMD_4P-L5.0-W5.0-BL_TC5050RGB"
@@ -12528,7 +12585,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D21")
+					(reference "LED7")
 					(unit 1)
 				)
 			)
@@ -12544,7 +12601,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "df22b39f-44fa-436f-86b9-ac3178ad807b")
-		(property "Reference" "#PWR086"
+		(property "Reference" "#PWR028"
 			(at 245.11 44.45 0)
 			(effects
 				(font
@@ -12594,7 +12651,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR086")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -12608,8 +12665,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "dfc5678d-897a-4e3c-aaba-f724c3e57092")
-		(property "Reference" "#PWR0159"
+		(property "Reference" "#PWR05"
 			(at 80.01 44.45 0)
 			(effects
 				(font
@@ -12619,12 +12677,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 78.994 41.656 0)
+			(at 80.01 41.91 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -12660,7 +12717,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0159")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -12676,8 +12733,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3034b03-59bd-4e6a-bd8a-b710fb148294")
-		(property "Reference" "D20"
-			(at 259.08 127.5648 0)
+		(property "Reference" "LED8"
+			(at 276.86 127.5648 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -12685,7 +12742,7 @@
 			)
 		)
 		(property "Value" "WS2812B"
-			(at 259.08 128.8348 0)
+			(at 276.86 128.8348 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -12862,7 +12919,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D20")
+					(reference "LED8")
 					(unit 1)
 				)
 			)
@@ -12879,7 +12936,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3cde7c3-ed76-4d2f-b12c-ef0c4724abe5")
-		(property "Reference" "TP9"
+		(property "Reference" "TP6"
 			(at 128.27 91.7574 0)
 			(effects
 				(font
@@ -13002,7 +13059,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP9")
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -13018,7 +13075,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e5293386-882a-4027-9b5e-c46e2ec567df")
-		(property "Reference" "D15"
+		(property "Reference" "LED6"
 			(at 246.38 127.5648 0)
 			(effects
 				(font
@@ -13204,7 +13261,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "D15")
+					(reference "LED6")
 					(unit 1)
 				)
 			)
@@ -13402,8 +13459,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "e6cedb2e-9201-41c6-8f0d-88ad402d580c")
-		(property "Reference" "#PWR0148"
+		(property "Reference" "#PWR017"
 			(at 181.61 69.85 0)
 			(effects
 				(font
@@ -13413,12 +13471,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 180.34 67.31 0)
+			(at 181.61 67.31 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -13454,7 +13511,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR0148")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -13470,8 +13527,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ec94b8a8-c282-4b3b-9042-1436b00397a8")
-		(property "Reference" "TP6"
-			(at 39.878 69.85 90)
+		(property "Reference" "TP2"
+			(at 39.878 71.12 90)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13519,7 +13576,7 @@
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "TP6")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -13534,9 +13591,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "ecf3b133-46e1-4031-86bc-1895fad0987a")
-		(property "Reference" "R1"
-			(at 248.666 87.122 0)
+		(property "Reference" "R8"
+			(at 247.65 86.9949 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13545,7 +13603,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 248.666 88.392 0)
+			(at 247.65 88.2649 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13689,7 +13747,7 @@
 		(instances
 			(project "HW_Container_AC_Controller"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R1")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -13703,9 +13761,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "ed851f9d-5135-4a04-beb7-f2c37fee39e5")
-		(property "Reference" "KEY2"
-			(at 227.33 80.01 0)
+		(property "Reference" "BUTTON2"
+			(at 227.33 81.28 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13713,7 +13772,7 @@
 			)
 		)
 		(property "Value" "DTSM-61R-V-T/R"
-			(at 227.33 81.28 0)
+			(at 227.33 82.55 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13771,7 +13830,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "KEY2")
+					(reference "BUTTON2")
 					(unit 1)
 				)
 			)
@@ -13786,8 +13845,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "f41f30cd-e1ec-481f-b34d-939380fae298")
-		(property "Reference" "#PWR098"
+		(property "Reference" "#PWR08"
 			(at 105.41 59.69 0)
 			(effects
 				(font
@@ -13797,12 +13857,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 104.394 56.896 0)
+			(at 105.41 57.15 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
@@ -13838,7 +13897,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR098")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -13853,8 +13912,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
+		(fields_autoplaced yes)
 		(uuid "f6aec208-f0d4-4d5f-bd69-7ae65dda069f")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR033"
 			(at 267.97 148.59 0)
 			(effects
 				(font
@@ -13864,12 +13924,11 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 268.986 145.796 0)
+			(at 267.97 146.05 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -13905,7 +13964,7 @@
 		(instances
 			(project "BirtdayCard.kicad_pcb"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "#PWR047")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -13921,8 +13980,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fe919749-1f30-43c9-bb22-5c31619e72bd")
-		(property "Reference" "R7"
-			(at 64.77 80.0099 0)
+		(property "Reference" "R1"
+			(at 64.77 80.6449 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -13931,7 +13990,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 64.77 81.2799 0)
+			(at 64.77 81.9149 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14075,7 +14134,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R7")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -14091,7 +14150,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fff437b5-fea6-470a-9952-11a50b20e954")
-		(property "Reference" "R28"
+		(property "Reference" "R4"
 			(at 74.93 31.75 90)
 			(effects
 				(font
@@ -14224,7 +14283,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "R28")
+					(reference "R4")
 					(unit 1)
 				)
 			)
