@@ -3960,7 +3960,7 @@
 		(uuid "fd74f5d3-c37f-4bb9-9baa-fddfd315fe9d")
 	)
 	(no_connect
-		(at 36.83 36.83)
+		(at 36.83 35.56)
 		(uuid "0bc1e334-8799-40bc-9adc-85fffeeea3d6")
 	)
 	(no_connect
@@ -12884,7 +12884,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e3cde7c3-ed76-4d2f-b12c-ef0c4724abe5")
 		(property "Reference" "TP6"
 			(at 128.27 91.7574 0)
@@ -12901,7 +12900,7 @@
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
