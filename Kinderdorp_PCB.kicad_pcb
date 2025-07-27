@@ -3456,7 +3456,7 @@
 	(footprint "LOGO"
 		(layer "F.Cu")
 		(uuid "50cc4c8d-62c4-40dc-89bd-9dc861862177")
-		(at 128.32 81.19)
+		(at 128.088279 83.735925)
 		(property "Reference" "G***"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -22804,8 +22804,8 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "Casper R. Tak\n27-07-2025\nhttps://github.com/Casperdroid5/Kinderdorp-PCB"
-		(at 121.751721 73.504075 0)
+	(gr_text "Kinderdorp_PCB\nV1.0\n27-07-2025\nCasper R. Tak\nhttps://github.com/Casperdroid5/Kinderdorp-PCB"
+		(at 121.52 76.05 0)
 		(layer "F.SilkS")
 		(uuid "c3b6c233-8b43-4d57-9b8a-5c0c2fb6d518")
 		(effects
