@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "Kinderdorp Printplaat")
-		(date "2025-07-26")
+		(date "2025-07-27")
 		(rev "V1.0")
 		(comment 1 "Casper R. Tak")
 	)
@@ -1066,6 +1066,220 @@
 					(at 0 -2.54 90)
 					(length 0.762)
 					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Diode:SM712_SOT23"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SM712_SOT23"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 0 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf"
+				(at -3.81 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "7V/12V, 600W Asymmetrical TVS Diode Array, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "transient voltage suppressor thyrector transil"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SM712_SOT23_0_0"
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SM712_SOT23_0_1"
+				(polyline
+					(pts
+						(xy -6.35 0) (xy 6.35 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.35 -1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -6.35 1.27) (xy -6.35 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.302 1.27) (xy -3.81 1.27) (xy -3.81 -1.27) (xy -4.318 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy 6.35 -1.27) (xy 6.35 1.27) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.318 1.27) (xy 3.81 1.27) (xy 3.81 -1.27) (xy 3.302 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SM712_SOT23_1_1"
+				(pin passive line
+					(at -8.89 0 0)
+					(length 2.54)
+					(name "A1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "common"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 8.89 0 180)
+					(length 2.54)
+					(name "A2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4147,7 +4361,7 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 99.06) (xy 62.23 93.98)
+			(xy 62.23 100.33) (xy 62.23 93.98)
 		)
 		(stroke
 			(width 0)
@@ -5315,6 +5529,50 @@
 		)
 		(uuid "fe68dec8-3cbe-4db5-8c3a-6ba23657a2dd")
 	)
+	(global_label "SCL"
+		(shape input)
+		(at 83.82 116.84 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "028126e3-a1b7-40f4-9a94-fee71308fbf3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 77.3272 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "D-_USB"
+		(shape input)
+		(at 83.82 134.62 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "029a1193-8eca-46bc-bbf8-7fb323ea64df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.2148 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GPIO6"
 		(shape input)
 		(at 189.23 88.9 0)
@@ -5328,6 +5586,29 @@
 		(uuid "04b67d94-1d55-47a3-9c63-7d913719be25")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 197.9 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "D+_USB"
+		(shape input)
+		(at 101.6 134.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0b224666-0dac-4607-9287-e1a65f57e654")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 112.2052 134.62 0)
+			(show_name yes)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5355,6 +5636,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape input)
+		(at 101.6 116.84 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "160f3548-7d54-42c2-9c38-f63e608cdb47")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 108.1533 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -6446,6 +6749,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 92.71 138.43 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1059128f-af52-49d7-ad22-12dedd72cdf4")
+		(property "Reference" "#PWR035"
+			(at 92.71 144.78 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 92.71 142.24 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 92.71 138.43 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 138.43 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 138.43 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5299e422-69b6-40c7-b3f0-87f122c79926")
+		)
+		(instances
+			(project "Kinderdorp_PCB"
+				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
+					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint_Alt")
 		(at 39.37 100.33 90)
 		(unit 1)
@@ -6521,7 +6890,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13da2f1e-5781-494c-ab3d-bb731202090a")
-		(property "Reference" "USB-"
+		(property "Reference" "USB-1"
 			(at 125.73 72.7074 0)
 			(effects
 				(font
@@ -6644,7 +7013,7 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "USB-")
+					(reference "USB-1")
 					(unit 1)
 				)
 			)
@@ -7746,21 +8115,19 @@
 		(fields_autoplaced yes)
 		(uuid "2be2cab6-c1b1-4179-bd4a-22b1e2eb99c2")
 		(property "Reference" "F1"
-			(at 90.17 43.18 0)
+			(at 90.17 48.26 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
 			)
 		)
-		(property "Value" "Fuse_Small 2A"
-			(at 90.8049 46.99 90)
+		(property "Value" "Resetable fuse 0.75A"
+			(at 90.17 49.53 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Footprint" "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
@@ -8797,7 +9164,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "574e564e-58ca-4372-af0c-cb8cbe35161b")
-		(property "Reference" "USB+"
+		(property "Reference" "USB+1"
 			(at 130.81 66.3574 0)
 			(effects
 				(font
@@ -8920,7 +9287,78 @@
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "USB+")
+					(reference "USB+1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:SM712_SOT23")
+		(at 92.71 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "606fdb56-00d7-4a37-aa9f-7d6603b0e2f4")
+		(property "Reference" "D3"
+			(at 92.71 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SM712_SOT23"
+			(at 92.71 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 92.71 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf"
+			(at 88.9 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "7V/12V, 600W Asymmetrical TVS Diode Array, SOT-23"
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b2297eb3-1bee-4472-9526-d1f8432298e9")
+		)
+		(pin "3"
+			(uuid "5e96e8e7-104c-4b75-bd81-dc357d0a50a5")
+		)
+		(pin "1"
+			(uuid "5a19cd07-0f25-4a68-92d1-f8ee533cc8a5")
+		)
+		(instances
+			(project "Kinderdorp_PCB"
+				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -9380,7 +9818,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 62.23 99.06 0)
+		(at 62.23 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9389,7 +9827,7 @@
 		(fields_autoplaced yes)
 		(uuid "701d7184-f905-4425-a6ab-42771fc5f745")
 		(property "Reference" "#PWR02"
-			(at 62.23 105.41 0)
+			(at 62.23 106.68 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9398,7 +9836,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 62.23 102.87 0)
+			(at 62.23 104.14 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9406,7 +9844,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 62.23 99.06 0)
+			(at 62.23 100.33 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9415,7 +9853,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 62.23 99.06 0)
+			(at 62.23 100.33 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9424,7 +9862,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 62.23 99.06 0)
+			(at 62.23 100.33 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9966,6 +10404,72 @@
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 92.71 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "87b56075-8ed9-432a-acd0-23dc8384c205")
+		(property "Reference" "#PWR034"
+			(at 92.71 127 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 92.71 124.46 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 92.71 120.65 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 92.71 120.65 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 92.71 120.65 0)
+			(effects
+				(font
+					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e9e14714-327d-484b-be8d-e2e622aa6ada")
+		)
+		(instances
+			(project "Kinderdorp_PCB"
+				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -11253,6 +11757,77 @@
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
 					(reference "HDR1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:SM712_SOT23")
+		(at 92.71 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b88998e6-b7c4-44f8-8f80-47a2365cb616")
+		(property "Reference" "D2"
+			(at 92.71 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SM712_SOT23"
+			(at 92.71 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 92.71 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf"
+			(at 88.9 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "7V/12V, 600W Asymmetrical TVS Diode Array, SOT-23"
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "85815860-a9b6-459a-8e71-ca0f705d0e30")
+		)
+		(pin "3"
+			(uuid "0b9ab92e-bd58-42fd-8448-f492a3b3189c")
+		)
+		(pin "1"
+			(uuid "1aee4359-d96a-4e69-96fd-6e30a9ff45e8")
+		)
+		(instances
+			(project ""
+				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
+					(reference "D2")
 					(unit 1)
 				)
 			)
