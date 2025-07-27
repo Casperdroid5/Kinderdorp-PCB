@@ -5,7 +5,7 @@
 	(uuid "17f7643f-a16b-4802-8051-c0810a7f40c9")
 	(paper "A4")
 	(title_block
-		(title "Kinderdorp Printplaat")
+		(title "Kinderdorp_PCB")
 		(date "2025-07-27")
 		(rev "V1.0")
 		(comment 1 "Casper R. Tak")
@@ -3903,6 +3903,16 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "ESD protection"
+		(exclude_from_sim no)
+		(at 93.218 107.95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0f04b005-24df-4297-9867-90ee4abd4581")
+	)
 	(text "Legacy programming pins"
 		(exclude_from_sim no)
 		(at 116.586 94.996 0)
@@ -3913,7 +3923,17 @@
 		)
 		(uuid "2985c430-8dc8-45da-a425-4c5411a65df0")
 	)
-	(text "ESP32 C3"
+	(text "5V -> 3.3V DC/DC converter"
+		(exclude_from_sim no)
+		(at 124.968 29.972 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3ac226f8-528c-4601-bab6-0dbed6f0c639")
+	)
+	(text "Microcontroller"
 		(exclude_from_sim no)
 		(at 179.07 54.61 0)
 		(effects
@@ -3923,9 +3943,19 @@
 		)
 		(uuid "509aaa82-5328-4e51-b3df-3df9ede90194")
 	)
-	(text "RGBs"
+	(text "GPIO header"
 		(exclude_from_sim no)
-		(at 194.818 116.84 0)
+		(at 256.54 24.638 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5a007070-86a5-49d8-9bde-7aad2bcb8ba1")
+	)
+	(text "RGB LEDs"
+		(exclude_from_sim no)
+		(at 202.692 118.364 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3933,9 +3963,9 @@
 		)
 		(uuid "61a98f99-6065-45ba-a098-78095b837f6c")
 	)
-	(text "Populate with either\n2*CR2032\nOR\n3*AAA\nBattery holders"
+	(text "Populate with either\n2*CR2032\nOR\n3/4*AAA\nBattery holders"
 		(exclude_from_sim no)
-		(at 50.546 57.404 0)
+		(at 15.748 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3946,7 +3976,7 @@
 	)
 	(text "Battery voltage sensor\n6V: 3V\n4.5V: 2.25V\n3V: 1.5V\n2V : 1V"
 		(exclude_from_sim no)
-		(at 79.756 87.63 0)
+		(at 75.692 87.63 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3967,7 +3997,7 @@
 	)
 	(text "Light sensor (LDR)"
 		(exclude_from_sim no)
-		(at 156.21 50.8 0)
+		(at 153.67 56.388 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3985,9 +4015,9 @@
 		)
 		(uuid "d6e3474b-27bb-4723-bda7-7155e75a1b72")
 	)
-	(text "USER INPUT"
+	(text "Buttons"
 		(exclude_from_sim no)
-		(at 227.584 61.214 0)
+		(at 227.33 62.484 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4060,7 +4090,7 @@
 		(uuid "5bc5567d-7613-4cfc-9663-32184ff70a15")
 	)
 	(junction
-		(at 105.41 53.34)
+		(at 110.49 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6035a8d9-84f5-4158-997e-f2415a06567c")
@@ -4114,7 +4144,7 @@
 		(uuid "b9bb0843-1fc6-4ce1-a967-c691f8322d6e")
 	)
 	(junction
-		(at 133.35 48.26)
+		(at 138.43 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bb792854-67b4-42e8-9895-331eb820ef32")
@@ -4162,7 +4192,7 @@
 		(uuid "ed42be20-96ee-4afd-8e47-b143af452df6")
 	)
 	(junction
-		(at 105.41 48.26)
+		(at 110.49 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f129fb20-6307-412c-a115-d8b40b45b41b")
@@ -4381,7 +4411,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 45.72) (xy 133.35 48.26)
+			(xy 138.43 38.1) (xy 138.43 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4431,7 +4461,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 53.34) (xy 109.22 53.34)
+			(xy 110.49 45.72) (xy 114.3 45.72)
 		)
 		(stroke
 			(width 0)
@@ -4521,7 +4551,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 48.26) (xy 129.54 48.26)
+			(xy 138.43 40.64) (xy 134.62 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4551,7 +4581,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 48.26) (xy 109.22 48.26)
+			(xy 110.49 40.64) (xy 114.3 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4771,7 +4801,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 45.72) (xy 105.41 48.26)
+			(xy 110.49 38.1) (xy 110.49 40.64)
 		)
 		(stroke
 			(width 0)
@@ -5021,7 +5051,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 53.34) (xy 133.35 53.34)
+			(xy 134.62 45.72) (xy 138.43 45.72)
 		)
 		(stroke
 			(width 0)
@@ -5031,7 +5061,7 @@
 	)
 	(wire
 		(pts
-			(xy 133.35 53.34) (xy 133.35 48.26)
+			(xy 138.43 45.72) (xy 138.43 40.64)
 		)
 		(stroke
 			(width 0)
@@ -6460,6 +6490,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 161.29 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b79ef88d-1d6f-4da5-850c-72edae45dff2")
 		)
@@ -6483,7 +6585,7 @@
 	)
 	(symbol
 		(lib_id "Titan_frontplate_front_BMS_V1.3-rescue:+3.3V-power")
-		(at 105.41 45.72 0)
+		(at 110.49 38.1 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6493,7 +6595,7 @@
 		(fields_autoplaced yes)
 		(uuid "0b0be8de-5611-421e-8df5-f95ef3a434b3")
 		(property "Reference" "#PWR07"
-			(at 102.87 43.815 0)
+			(at 107.95 36.195 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6503,7 +6605,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 105.41 41.91 0)
+			(at 110.49 34.29 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6511,7 +6613,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
-			(at 102.87 45.72 0)
+			(at 107.95 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6521,7 +6623,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 45.72 0)
+			(at 110.49 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6530,7 +6632,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 45.72 0)
+			(at 110.49 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -6824,7 +6926,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1387d804-3a48-436e-8b3b-38d7d2da4d78")
-		(property "Reference" "BATT-1"
+		(property "Reference" "BATT-"
 			(at 36.068 96.52 90)
 			(effects
 				(font
@@ -6867,13 +6969,85 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 39.37 100.33 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "75b51379-4f21-4088-b49b-69592fd2f859")
 		)
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BATT-1")
+					(reference "BATT-")
 					(unit 1)
 				)
 			)
@@ -6890,22 +7064,22 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "13da2f1e-5781-494c-ab3d-bb731202090a")
-		(property "Reference" "USB-1"
-			(at 125.73 72.7074 0)
+		(property "Reference" "USB-"
+			(at 130.81 72.7074 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "TestPoint_Probe"
-			(at 125.73 73.9774 0)
+			(at 130.81 73.9774 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
@@ -7007,13 +7181,85 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 129.54 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3e6af606-6b20-4b99-992a-74be5e4759b1")
 		)
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "USB-1")
+					(reference "USB-")
 					(unit 1)
 				)
 			)
@@ -7172,6 +7418,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 149.86 132.08 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b63db166-5deb-4e22-9fe0-bb83662bf030")
 		)
@@ -7251,6 +7569,78 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 45.72 95.25 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6615d8b4-bf54-439f-804a-ea35c22b4e33")
 		)
@@ -7324,6 +7714,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 49.53 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -7484,6 +7946,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 130.81 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -7851,6 +8385,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 142.24 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "21e9323d-460e-4799-a79e-e822250d6793")
 		)
@@ -7868,7 +8474,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 105.41 50.8 0)
+		(at 110.49 43.18 0)
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7878,7 +8484,7 @@
 		(fields_autoplaced yes)
 		(uuid "2a2ef9c8-75b9-418b-bb45-899b8d47ade8")
 		(property "Reference" "C1"
-			(at 102.87 50.1585 0)
+			(at 107.95 42.5385 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7887,7 +8493,7 @@
 			)
 		)
 		(property "Value" "47uF 10V"
-			(at 102.87 51.4285 0)
+			(at 107.95 43.8085 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7896,7 +8502,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7905,7 +8511,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7914,7 +8520,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 102.87 52.0635 0)
+			(at 107.95 44.4435 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7924,7 +8530,7 @@
 			)
 		)
 		(property "Checked Footprint and availability" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7933,7 +8539,7 @@
 			)
 		)
 		(property "Sim.Type" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7942,7 +8548,7 @@
 			)
 		)
 		(property "LCSC Part" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7951,7 +8557,7 @@
 			)
 		)
 		(property "Alternative" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7959,7 +8565,7 @@
 			)
 		)
 		(property "Alternative part" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7967,7 +8573,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7975,7 +8581,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7983,7 +8589,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7991,7 +8597,7 @@
 			)
 		)
 		(property "Sim.Library" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -7999,7 +8605,7 @@
 			)
 		)
 		(property "Sim.Name" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8007,7 +8613,7 @@
 			)
 		)
 		(property "Sim.Params" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8015,11 +8621,83 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 105.41 50.8 0)
+			(at 110.49 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 110.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "2"
@@ -8153,6 +8831,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 90.17 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -8306,6 +9056,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 74.93 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8eb63892-8106-4e4c-b6e9-6fe98e10c345")
 		)
@@ -8381,6 +9203,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 45.72 85.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -8624,6 +9518,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bf17d645-8d32-42c5-b484-559d791894cd")
 		)
@@ -8697,6 +9663,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -8939,6 +9977,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 196.85 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1b478868-b7b6-4247-bde4-950b84ba35dc")
 		)
@@ -8956,7 +10066,7 @@
 	)
 	(symbol
 		(lib_id "Strata_frontplate_front_BMS_V2.1-rescue:+3.3V-power")
-		(at 133.35 45.72 0)
+		(at 138.43 38.1 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8966,7 +10076,7 @@
 		(fields_autoplaced yes)
 		(uuid "46af28a0-e649-4042-94e7-c91a1f08c641")
 		(property "Reference" "#PWR09"
-			(at 133.35 49.53 0)
+			(at 138.43 41.91 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8975,7 +10085,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 133.35 41.91 0)
+			(at 138.43 34.29 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8983,7 +10093,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 133.35 45.72 0)
+			(at 138.43 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -8992,7 +10102,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 133.35 45.72 0)
+			(at 138.43 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9001,7 +10111,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 133.35 45.72 0)
+			(at 138.43 38.1 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -9164,7 +10274,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "574e564e-58ca-4372-af0c-cb8cbe35161b")
-		(property "Reference" "USB+1"
+		(property "Reference" "USB+"
 			(at 130.81 66.3574 0)
 			(effects
 				(font
@@ -9281,13 +10391,85 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 129.54 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6990c756-9f00-4eec-91f3-8ba330a80ffd")
 		)
 		(instances
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "USB+1")
+					(reference "USB+")
 					(unit 1)
 				)
 			)
@@ -9338,6 +10520,78 @@
 			)
 		)
 		(property "Description" "7V/12V, 600W Asymmetrical TVS Diode Array, SOT-23"
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 92.71 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
 			(at 92.71 134.62 0)
 			(effects
 				(font
@@ -9493,6 +10747,78 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "c546295e-e910-4189-8ded-4395e195e9c6")
 		)
@@ -9532,7 +10858,7 @@
 				)
 			)
 		)
-		(property "Value" "200"
+		(property "Value" "100"
 			(at 255.27 81.28 90)
 			(effects
 				(font
@@ -9665,6 +10991,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 255.27 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -10037,6 +11435,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 181.61 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d2fa99c4-e880-4a91-b8f9-63ea999920eb")
 		)
@@ -10256,7 +11726,7 @@
 	)
 	(symbol
 		(lib_id "easyeda2kicad:AMS1117-3.3_C347222")
-		(at 124.46 50.8 0)
+		(at 129.54 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10265,7 +11735,7 @@
 		(fields_autoplaced yes)
 		(uuid "877c5317-51b2-44f0-bae2-0c83466c2f77")
 		(property "Reference" "U1"
-			(at 119.38 43.18 0)
+			(at 124.46 35.56 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10273,7 +11743,7 @@
 			)
 		)
 		(property "Value" "AMS1117-3.3_C347222"
-			(at 119.38 44.45 0)
+			(at 124.46 36.83 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10281,7 +11751,7 @@
 			)
 		)
 		(property "Footprint" "easyeda2kicad:SOT-223-4_L6.5-W3.5-P2.30-LS7.0-BR"
-			(at 124.46 60.96 0)
+			(at 129.54 53.34 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10290,7 +11760,7 @@
 			)
 		)
 		(property "Datasheet" "https://lcsc.com/product-detail/Others_Youtai-Semiconductor-Co-Ltd-AMS1117-3-3_C347222.html"
-			(at 124.46 63.5 0)
+			(at 129.54 55.88 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10299,7 +11769,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10308,7 +11778,7 @@
 			)
 		)
 		(property "LCSC Part" "C347222"
-			(at 124.46 66.04 0)
+			(at 129.54 58.42 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10317,7 +11787,7 @@
 			)
 		)
 		(property "Alternative" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10325,7 +11795,7 @@
 			)
 		)
 		(property "Alternative part" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10333,7 +11803,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10341,7 +11811,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10349,7 +11819,7 @@
 			)
 		)
 		(property "Sim.Device" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10357,7 +11827,7 @@
 			)
 		)
 		(property "Sim.Library" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10365,7 +11835,7 @@
 			)
 		)
 		(property "Sim.Name" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10373,7 +11843,7 @@
 			)
 		)
 		(property "Sim.Params" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -10381,11 +11851,83 @@
 			)
 		)
 		(property "Sim.Pins" ""
-			(at 124.46 50.8 0)
+			(at 129.54 43.18 0)
 			(effects
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 129.54 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "4"
@@ -10831,6 +12373,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 62.23 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4ae5bfe0-e182-4a65-b08b-d94953f3b53d")
 		)
@@ -10980,6 +12594,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 179.07 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "18"
 			(uuid "de885fda-b0dc-48f2-af67-d6ec16e0cf18")
 		)
@@ -11097,6 +12783,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 142.24 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -11297,6 +13055,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 191.77 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e75057cf-e45f-4adc-864e-050d2bfb245b")
 		)
@@ -11452,6 +13282,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 264.16 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "2"
@@ -11653,6 +13555,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 176.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bcf68303-8222-42b9-8075-a4121625c989")
 		)
@@ -11725,6 +13699,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 259.08 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -11815,6 +13861,78 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 92.71 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "85815860-a9b6-459a-8e71-ca0f705d0e30")
 		)
@@ -11882,6 +14000,78 @@
 			(effects
 				(font
 					(size 0.75 0.75)
+				)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 36.83 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -12074,6 +14264,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 222.25 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12411,6 +14673,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 207.01 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f3f5d7ff-adc1-4eb4-b262-c3c9df1c4265")
 		)
@@ -12624,6 +14958,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 191.77 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -12898,6 +15304,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 176.53 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "502c68f6-a4df-460a-b5c1-63514c7f98af")
 		)
@@ -13093,6 +15571,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 252.73 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -13429,6 +15979,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 267.97 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "00f3ecb2-5cd0-4c97-81ad-0018bdeefafc")
 		)
@@ -13575,6 +16197,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -13770,6 +16464,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 237.49 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a74d5c0a-eba4-4f97-9117-9950634f405e")
 		)
@@ -13960,6 +16726,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 269.24 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "N"
 			(uuid "2418d3b0-9276-494e-8deb-304eefa83e88")
 		)
@@ -14051,7 +16889,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ec94b8a8-c282-4b3b-9042-1436b00397a8")
-		(property "Reference" "BATT+1"
+		(property "Reference" "BATT+"
 			(at 39.878 71.12 90)
 			(effects
 				(font
@@ -14094,13 +16932,85 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 43.18 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c305bf42-6b23-41d1-802b-b2eeeaf0bc06")
 		)
 		(instances
 			(project ""
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BATT+1")
+					(reference "BATT+")
 					(unit 1)
 				)
 			)
@@ -14262,6 +17172,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 250.19 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "687f148f-ade5-4fe5-9f70-cdac1ce967fd")
 		)
@@ -14339,6 +17321,78 @@
 				(hide yes)
 			)
 		)
+		(property "Availability" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 227.33 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "a2704f4f-0b06-4885-84f5-39306a2d17a9")
 		)
@@ -14362,7 +17416,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 105.41 53.34 0)
+		(at 110.49 45.72 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14372,7 +17426,7 @@
 		(fields_autoplaced yes)
 		(uuid "f41f30cd-e1ec-481f-b34d-939380fae298")
 		(property "Reference" "#PWR08"
-			(at 105.41 59.69 0)
+			(at 110.49 52.07 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14381,7 +17435,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 105.41 57.15 0)
+			(at 110.49 49.53 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14389,7 +17443,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 105.41 53.34 0)
+			(at 110.49 45.72 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14398,7 +17452,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 53.34 0)
+			(at 110.49 45.72 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14407,7 +17461,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 53.34 0)
+			(at 110.49 45.72 0)
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -14649,6 +17703,78 @@
 				)
 			)
 		)
+		(property "Availability" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 62.23 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8e31da07-6ff5-4252-97b6-1f660d4d6b5e")
 		)
@@ -14796,6 +17922,78 @@
 				(font
 					(size 0.75 0.75)
 				)
+			)
+		)
+		(property "Availability" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 74.93 35.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"

@@ -21,7 +21,7 @@ fp-info-cache
 
 # Backup folder
 *-backups/
-*production/
+
 
 # Netlist files (exported from Eeschema)
 *.net
@@ -45,3 +45,4 @@ fp-info-cache
 *:Zone.Identifier*
 *\:Zone.Identifier*
 /Kinderdorp_PCB-backups
+fabrication-toolkit-options.json
