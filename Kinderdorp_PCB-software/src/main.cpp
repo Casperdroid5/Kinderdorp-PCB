@@ -129,23 +129,97 @@ const int NOTE_D5 = 587;
 const int NOTE_E5 = 659;
 const int NOTE_F5 = 698;
 const int NOTE_G5 = 784;
+const int REST = 0;  // For pauses
 
-// Happy Birthday Melody (placeholder for Kinderdorp song)
+// Kinderdorp Lied Melody
+// Pattern: Edegc, Edegc, Eede, Edegc, Edegc, Eede, FFA, Eeg, Gggfefg, FFA, Eeg, Ggggg D G, etc.
 const int melody[] = {
-  NOTE_G4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_C5, NOTE_B4,
-  NOTE_G4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_D5, NOTE_C5,
-  NOTE_G4, NOTE_G4, NOTE_G5, NOTE_E5, NOTE_C5, NOTE_B4, NOTE_A4,
-  NOTE_F5, NOTE_F5, NOTE_E5, NOTE_C5, NOTE_D5, NOTE_C5
+  // First verse: Edegc, Edegc, Eede
+  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
+  REST,                                           // Short pause
+  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
+  NOTE_E4, NOTE_E4, NOTE_D4, NOTE_E4,           // Eede
+  
+  // Second verse: Edegc, Edegc, Eede  
+  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
+  REST,                                           // Short pause
+  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
+  NOTE_E4, NOTE_E4, NOTE_D4, NOTE_E4,           // Eede
+  
+  // Chorus part: FFA, Eeg
+  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
+  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
+  
+  // Gggfefg
+  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4,
+  
+  // FFA, Eeg  
+  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
+  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
+  
+  // Ggggg D G
+  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_D5, NOTE_G4,
+  
+  // Repeat chorus: FFA, Eeg
+  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
+  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
+  
+  // Gggfefg  
+  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4,
+  
+  // FFA, Eeg
+  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
+  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
+  
+  // Final: Ggggg D G
+  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_D5, NOTE_G4
 };
 
+// Note durations for Kinderdorp lied (based on typical children's song timing)
+// 4 = quarter note, 8 = eighth note, 2 = half note, 1 = whole note
 const int noteDurationFractions[] = {
-  8, 8, 4, 4, 4, 2,
-  8, 8, 4, 4, 4, 2,
-  8, 8, 4, 4, 4, 4, 4,
-  8, 8, 4, 4, 4, 2
+  // First verse: Edegc, Edegc, Eede - moderate tempo
+  4, 4, 4, 4, 2,    // Edegc
+  8,                // Short pause
+  4, 4, 4, 4, 2,    // Edegc  
+  4, 4, 4, 2,       // Eede
+  
+  // Second verse: Edegc, Edegc, Eede
+  4, 4, 4, 4, 2,    // Edegc
+  8,                // Short pause
+  4, 4, 4, 4, 2,    // Edegc
+  4, 4, 4, 2,       // Eede
+  
+  // Chorus part: FFA, Eeg - slightly faster/more energetic
+  4, 4, 2,          // FFA
+  4, 4, 2,          // Eeg
+  
+  // Gggfefg - playful rhythm
+  4, 4, 4, 4, 4, 4, 2,
+  
+  // FFA, Eeg
+  4, 4, 2,          // FFA
+  4, 4, 2,          // Eeg
+  
+  // Ggggg D G - building up
+  4, 4, 4, 4, 4, 4, 1,
+  
+  // Repeat chorus: FFA, Eeg
+  4, 4, 2,          // FFA
+  4, 4, 2,          // Eeg
+  
+  // Gggfefg
+  4, 4, 4, 4, 4, 4, 2,
+  
+  // FFA, Eeg
+  4, 4, 2,          // FFA  
+  4, 4, 2,          // Eeg
+  
+  // Final: Ggggg D G - grand finale
+  4, 4, 4, 4, 4, 4, 1
 };
 
-const int tempo = 250;
+const int tempo = 180;  // Adjusted for children's song tempo (was 250)
 const int melodyLength = sizeof(melody) / sizeof(melody[0]);
 int currentNote = 0;
 
