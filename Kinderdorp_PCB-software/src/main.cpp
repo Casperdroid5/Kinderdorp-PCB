@@ -116,22 +116,30 @@ uint8_t breatheHue = 0;
 uint8_t waveOffset = 0;
 uint8_t waveHue = 0;
 
-// Music Notes
+// Music Notes - Extended range for Meneer Kaktus
 const int NOTE_C4 = 262;
+const int NOTE_CS4 = 277;
 const int NOTE_D4 = 294;
+const int NOTE_DS4 = 311;
 const int NOTE_E4 = 330;
 const int NOTE_F4 = 349;
+const int NOTE_FS4 = 370;
 const int NOTE_G4 = 392;
+const int NOTE_GS4 = 415;
 const int NOTE_A4 = 440;
+const int NOTE_AS4 = 466;
 const int NOTE_B4 = 494;
 const int NOTE_C5 = 523;
+const int NOTE_CS5 = 554;
 const int NOTE_D5 = 587;
+const int NOTE_DS5 = 622;
 const int NOTE_E5 = 659;
 const int NOTE_F5 = 698;
+const int NOTE_FS5 = 740;
 const int NOTE_G5 = 784;
 const int REST = 0;  // For pauses
 
-// Kinderdorp Lied Melody
+// Kinderdorp Lied Melody - Your original version
 // Pattern: Edegc, Edegc, Eede, Edegc, Edegc, Eede, FFA, Eeg, Gggfefg, FFA, Eeg, Ggggg D G, etc.
 const int melody[] = {
   // First verse: Edegc, Edegc, Eede
@@ -175,51 +183,55 @@ const int melody[] = {
   NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_D5, NOTE_G4
 };
 
-// Note durations for Kinderdorp lied (based on typical children's song timing)
-// 4 = quarter note, 8 = eighth note, 2 = half note, 1 = whole note
+// Note durations for Kinderdorp lied
+// Lower number = longer duration (because it's a divisor in the calculation)
 const int noteDurationFractions[] = {
-  // First verse: Edegc, Edegc, Eede - moderate tempo
-  4, 4, 4, 4, 2,    // Edegc
-  8,                // Short pause
-  4, 4, 4, 4, 2,    // Edegc  
-  4, 4, 4, 2,       // Eede
+  // First verse: Edegc, Edegc, Eede - GOOD PATTERN
+  4, 4, 2, 4, 1,    // Edegc
+  8,                // Short pause (0.5 sec)
+  4, 4, 2, 4, 1,    // Edegc
+  4, 4, 2, 4, 1,    // Eede
   
-  // Second verse: Edegc, Edegc, Eede
-  4, 4, 4, 4, 2,    // Edegc
-  8,                // Short pause
-  4, 4, 4, 4, 2,    // Edegc
-  4, 4, 4, 2,       // Eede
+  2,            // longer pause (1 sec)
+
+  // Second verse: Same pattern as first verse - GOOD PATTERN
+  4, 4, 2, 4, 1,    // Edegc
+  8,                // Short pause (0.5 sec)
+  4, 4, 2, 4, 1,    // Edegc
+  4, 4, 2, 4, 1,    // Eede
   
-  // Chorus part: FFA, Eeg - slightly faster/more energetic
-  4, 4, 2,          // FFA
-  4, 4, 2,          // Eeg
+  // Chorus part: FFA - same style as first verse
+  2, 2, 4,          // FFA
   
-  // Gggfefg - playful rhythm
-  4, 4, 4, 4, 4, 4, 2,
+  // Eeg - same style
+  2, 2, 4,          // Eeg
   
-  // FFA, Eeg
-  4, 4, 2,          // FFA
-  4, 4, 2,          // Eeg
+  // Gggfefg - same pattern as Eede
+  4, 4, 4, 2, 4, 4, 4,  // Gggfefg
   
-  // Ggggg D G - building up
-  4, 4, 4, 4, 4, 4, 1,
+  // FFA, Eeg - repeat same pattern
+  4, 4, 1,          // FFA
+  4, 4, 1,          // Eeg
   
-  // Repeat chorus: FFA, Eeg
-  4, 4, 2,          // FFA
-  4, 4, 2,          // Eeg
+  // Ggggg D G - similar to first verse ending
+  4, 4, 4, 4, 4, 2, 1,  // Ggggg D G
   
-  // Gggfefg
-  4, 4, 4, 4, 4, 4, 2,
+  // Repeat chorus: same pattern
+  4, 4, 1,          // FFA
+  4, 4, 1,          // Eeg
   
-  // FFA, Eeg
-  4, 4, 2,          // FFA  
-  4, 4, 2,          // Eeg
+  // Gggfefg - same as before
+  4, 4, 4, 4, 4, 4, 1,  // Gggfefg
   
-  // Final: Ggggg D G - grand finale
-  4, 4, 4, 4, 4, 4, 1
+  // FFA, Eeg - consistent pattern
+  4, 4, 1,          // FFA
+  4, 4, 1,          // Eeg
+  
+  // Final: Ggggg D G - same rhythm style
+  4, 4, 4, 4, 4, 2, 1   // Ggggg D G
 };
 
-const int tempo = 180;  // Adjusted for children's song tempo (was 250)
+const int tempo = 200;  // Higher number = slower tempo (was 80)
 const int melodyLength = sizeof(melody) / sizeof(melody[0]);
 int currentNote = 0;
 
@@ -700,7 +712,7 @@ void startSong() {
     currentColorIndex = random8(0, NUM_COLORS - 1); // Avoid black
   }
   
-  Serial.println("Starting Kinderdorp song (Happy Birthday placeholder)");
+  Serial.println("Starting Kinderdorp song");
 }
 
 void stopSong() {
@@ -717,10 +729,16 @@ void updateSong() {
 
   if (!noteIsPlaying && currentTime >= previousNoteTime) {
     if (currentNote < melodyLength) {
-      // Play note
-      noteDuration = (tempo * 4 / noteDurationFractions[currentNote]);
-      pauseDuration = noteDuration * 0.3;
-      tone(BUZZER, melody[currentNote], noteDuration);
+      // Play note (skip REST notes)
+      if (melody[currentNote] != REST) {
+        noteDuration = (tempo * 4 / noteDurationFractions[currentNote]);
+        pauseDuration = noteDuration * 0.2; // Shorter pause between notes for flow
+        tone(BUZZER, melody[currentNote], noteDuration);
+      } else {
+        // Handle REST note - 0.5 second pause
+        noteDuration = 500; // 0.5 seconds in milliseconds
+        pauseDuration = 0;   // No additional pause after REST
+      }
 
       // Light LEDs progressively
       float ledsPerNote = (float)(NUM_LEDS) / melodyLength;
