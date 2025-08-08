@@ -1,767 +1,271 @@
 #include <Arduino.h>  // Required for PlatformIO
 #include <FastLED.h>
 
-// Hardware Configuration - Updated for new PCB
-#define RGB_PIN 1      // Data pin for LED strip (GPIO1)
-#define BUZZER 10      // Buzzer pin (GPIO10)
-#define BUTTON1 4      // Button 1 pin (GPIO4) - change color/pattern
-#define BUTTON2 5      // Button 2 pin (GPIO5) - play song
-#define BATT_SENSE 3   // Battery voltage sensing pin (GPIO3)
-#define LDR_PIN 6      // Light sensor pin (GPIO6)
-#define NUM_LEDS 8     // Total number of LEDs (based on schematic)
+// Credit:
+// Midi to Arduino Converter - Andy Tran (extramaster), 2015
+// https://www.extramaster.net/tools/midiToArduino/
+//
+// PROPER MUSICAL TRANSPOSITION - 2 octaves up (4x original frequencies)
+// Maintains perfect musical intervals for proper harmony
+// All notes minimum 250ms duration
 
-// Battery voltage thresholds (after voltage divider: actual voltage = reading * 2)
-#define BATT_CR2032_MIN 2.75    // 5.5V / 2 = 2.75V (CR2032 batteries)
-#define BATT_CR2032_MAX 3.5     // 7V / 2 = 3.5V (CR2032 batteries)
-#define BATT_AAA_MIN 1.8        // 3.6V / 2 = 1.8V (AAA batteries)
-#define BATT_AAA_MAX 2.75       // 5.5V / 2 = 2.75V (AAA batteries)
-#define BATT_NO_DETECT 0.5      // Below this = no battery detected
-
-// Brightness levels based on power source
-#define BRIGHTNESS_USB 230      // 90% brightness for USB power
-#define BRIGHTNESS_BATTERY 89   // 35% brightness for battery power
-
-// LDR Configuration
-#define LDR_THRESHOLD 2000      // Light threshold (0-4095) - adjust based on testing
-#define LDR_HYSTERESIS 200      // Prevents flickering by adding hysteresis
-#define LDR_CHECK_INTERVAL 1000 // Check LDR every 1 second
-
-// LED Array
-CRGB leds[NUM_LEDS];
-
-// Button Handling
-bool button1State = HIGH;
-bool lastButton1State = HIGH;
-bool button2State = HIGH;
-bool lastButton2State = HIGH;
-unsigned long lastDebounceTime = 0;
-unsigned long debounceDelay = 50;
-
-// Power Management
-enum PowerSource {
-  POWER_USB,
-  POWER_CR2032,
-  POWER_AAA
-};
-PowerSource currentPowerSource = POWER_USB;
-int currentBrightness = BRIGHTNESS_USB;
-bool wifiEnabled = true;
-
-// Light Sensor Management
-bool ledsEnabledByLight = true;  // LEDs enabled by light sensor
-bool ledsForceEnabled = false;   // Override for button presses/songs
-unsigned long lastLDRCheck = 0;
-int lastLDRReading = 0;
-
-// Display Mode Enum
-enum DisplayMode {
-  STATIC_COLOR,
-  RAINBOW_MODE,
-  SNAKE_MODE,
-  RANDOM_BLINK,
-  CHASE_MODE,
-  BREATHE_MODE,
-  WAVE_MODE,
-  OFF_MODE
-};
-
-DisplayMode currentMode = STATIC_COLOR;
-
-// Color Options (Used for STATIC_COLOR mode)
-int currentColorIndex = 0;
-CRGB colorOptions[] = {
-  CRGB::Red,
-  CRGB::Green,
-  CRGB::Blue,
-  CRGB::Purple,
-  CRGB::Yellow,
-  CRGB::Cyan,
-  CRGB::White,
-  CRGB::Black
-};
-#define NUM_COLORS (sizeof(colorOptions) / sizeof(colorOptions[0]))
-
-// Pattern Variables
-unsigned long lastPatternUpdate = 0;
-unsigned long patternUpdateInterval = 50;
-
-// Pattern-specific speed controls (adjusted for battery life)
-const unsigned long RAINBOW_SPEED = 150;   // Slower to save power
-const unsigned long SNAKE_SPEED = 200;     // Slower snake movement
-const unsigned long CHASE_SPEED = 180;     // Slower chase pattern
-const unsigned long WAVE_SPEED = 120;      // Slower wave
-const unsigned long BREATHE_SPEED = 40;    // Slower breathe
-
-// Snake Pattern Variables
-uint8_t snakeHeadPos = 0;
-const uint8_t snakeLength = 3;  // Shorter snake for 8 LEDs
-uint8_t snakeHue = 0;
-
-// Random Blink Variables
-uint8_t randomLEDs[3] = {0};    // Fewer active LEDs for power saving
-uint8_t randomHues[3] = {0};
-unsigned long randomBlinkInterval = 600;
-unsigned long lastRandomUpdate = 0;
-
-// Chase Pattern Variables
-uint8_t chasePos = 0;
-uint8_t chaseHue = 0;
-
-// Breathe Pattern Variables
-uint8_t breatheBrightness = 0;
-bool breatheIncreasing = true;
-uint8_t breatheHue = 0;
-
-// Wave Pattern Variables
-uint8_t waveOffset = 0;
-uint8_t waveHue = 0;
-
-// Music Notes - Extended range for Meneer Kaktus
-const int NOTE_C4 = 262;
-const int NOTE_CS4 = 277;
-const int NOTE_D4 = 294;
-const int NOTE_DS4 = 311;
-const int NOTE_E4 = 330;
-const int NOTE_F4 = 349;
-const int NOTE_FS4 = 370;
-const int NOTE_G4 = 392;
-const int NOTE_GS4 = 415;
-const int NOTE_A4 = 440;
-const int NOTE_AS4 = 466;
-const int NOTE_B4 = 494;
-const int NOTE_C5 = 523;
-const int NOTE_CS5 = 554;
-const int NOTE_D5 = 587;
-const int NOTE_DS5 = 622;
-const int NOTE_E5 = 659;
-const int NOTE_F5 = 698;
-const int NOTE_FS5 = 740;
-const int NOTE_G5 = 784;
-const int REST = 0;  // For pauses
-
-// Kinderdorp Lied Melody - Your original version
-// Pattern: Edegc, Edegc, Eede, Edegc, Edegc, Eede, FFA, Eeg, Gggfefg, FFA, Eeg, Ggggg D G, etc.
-const int melody[] = {
-  // First verse: Edegc, Edegc, Eede
-  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
-  REST,                                           // Short pause
-  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
-  NOTE_E4, NOTE_E4, NOTE_D4, NOTE_E4,           // Eede
-  
-  // Second verse: Edegc, Edegc, Eede  
-  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
-  REST,                                           // Short pause
-  NOTE_E4, NOTE_D4, NOTE_E4, NOTE_G4, NOTE_C4,  // Edegc
-  NOTE_E4, NOTE_E4, NOTE_D4, NOTE_E4,           // Eede
-  
-  // Chorus part: FFA, Eeg
-  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
-  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
-  
-  // Gggfefg
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4,
-  
-  // FFA, Eeg  
-  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
-  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
-  
-  // Ggggg D G
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_D5, NOTE_G4,
-  
-  // Repeat chorus: FFA, Eeg
-  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
-  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
-  
-  // Gggfefg  
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_F4, NOTE_G4,
-  
-  // FFA, Eeg
-  NOTE_F4, NOTE_F4, NOTE_A4,                     // FFA
-  NOTE_E4, NOTE_E4, NOTE_G4,                     // Eeg
-  
-  // Final: Ggggg D G
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_D5, NOTE_G4
-};
-
-// Note durations for Kinderdorp lied
-// Lower number = longer duration (because it's a divisor in the calculation)
-const int noteDurationFractions[] = {
-  // First verse: Edegc, Edegc, Eede - GOOD PATTERN
-  4, 4, 2, 4, 1,    // Edegc
-  8,                // Short pause (0.5 sec)
-  4, 4, 2, 4, 1,    // Edegc
-  4, 4, 2, 4, 1,    // Eede
-  
-  2,            // longer pause (1 sec)
-
-  // Second verse: Same pattern as first verse - GOOD PATTERN
-  4, 4, 2, 4, 1,    // Edegc
-  8,                // Short pause (0.5 sec)
-  4, 4, 2, 4, 1,    // Edegc
-  4, 4, 2, 4, 1,    // Eede
-  
-  // Chorus part: FFA - same style as first verse
-  2, 2, 4,          // FFA
-  
-  // Eeg - same style
-  2, 2, 4,          // Eeg
-  
-  // Gggfefg - same pattern as Eede
-  4, 4, 4, 2, 4, 4, 4,  // Gggfefg
-  
-  // FFA, Eeg - repeat same pattern
-  4, 4, 1,          // FFA
-  4, 4, 1,          // Eeg
-  
-  // Ggggg D G - similar to first verse ending
-  4, 4, 4, 4, 4, 2, 1,  // Ggggg D G
-  
-  // Repeat chorus: same pattern
-  4, 4, 1,          // FFA
-  4, 4, 1,          // Eeg
-  
-  // Gggfefg - same as before
-  4, 4, 4, 4, 4, 4, 1,  // Gggfefg
-  
-  // FFA, Eeg - consistent pattern
-  4, 4, 1,          // FFA
-  4, 4, 1,          // Eeg
-  
-  // Final: Ggggg D G - same rhythm style
-  4, 4, 4, 4, 4, 2, 1   // Ggggg D G
-};
-
-const int tempo = 200;  // Higher number = slower tempo (was 80)
-const int melodyLength = sizeof(melody) / sizeof(melody[0]);
-int currentNote = 0;
-
-// Song State Machine
-enum SongState {
-  IDLE,
-  PLAYING_SONG
-};
-SongState songState = IDLE;
-
-// Timing Variables
-unsigned long previousNoteTime = 0;
-unsigned long noteEndTime = 0;
-unsigned long noteDuration = 0;
-unsigned long pauseDuration = 0;
-bool noteIsPlaying = false;
-int ledsLit = 0;
-
-// Battery monitoring
-unsigned long lastBatteryCheck = 0;
-const unsigned long batteryCheckInterval = 10000; // Check every 10 seconds
-
-// Force enable timer (for button interactions in bright light)
-unsigned long forceEnableStartTime = 0;
-const unsigned long forceEnableTimeout = 30000; // 30 seconds
-
-// Function prototypes
-void checkPowerSource();
-void checkLightSensor();
-bool shouldShowLEDs();
-void printPowerStatus();
-void checkButtons();
-void handleButton1Press();
-void handleButton2Press();
-void updatePatterns();
-void updateRainbowPattern();
-void updateSnakePattern();
-void updateRandomBlinkPattern(unsigned long currentTime);
-void updateChasePattern();
-void updateBreathePattern();
-void updateWavePattern();
-void turnOffAllLEDs();
-void updateDisplay();
-void startSong();
-void stopSong();
-void updateSong();
+int tonePin = 10;
 
 void setup() {
-  Serial.begin(115200);
-  Serial.println("Kinderdorp PCB Starting...");
-  
-  // Initialize hardware
-  pinMode(BUZZER, OUTPUT);
-  pinMode(BUTTON1, INPUT_PULLUP);
-  pinMode(BUTTON2, INPUT_PULLUP);
-  pinMode(BATT_SENSE, INPUT);
-  pinMode(LDR_PIN, INPUT);
-  
-  // Check initial power source and light conditions
-  checkPowerSource();
-  checkLightSensor();
-  
-  // Initialize LEDs with appropriate brightness
-  FastLED.addLeds<WS2812B, RGB_PIN, GRB>(leds, NUM_LEDS);
-  FastLED.setBrightness(currentBrightness);
-  
-  // Initial state
-  updateDisplay();
-  
-  Serial.println("Kinderdorp PCB Ready!");
-  printPowerStatus();
+
+}
+
+void midi() {
+    // Proper 2-octave transposition (4x original frequencies):
+    // C(261Hz) → C6(1044Hz), D(293Hz) → D6(1172Hz), E(329Hz) → E6(1316Hz), 
+    // F(349Hz) → F6(1396Hz), G(391Hz) → G6(1564Hz), A(440Hz) → A6(1760Hz)
+
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 44.92ms
+    delay(250);
+    delay(320.3125);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 34.20ms
+    delay(250);
+    delay(336.458333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 20.42ms
+    delay(250);
+    delay(696.354166667);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 10.21ms
+    delay(250);
+    delay(1118.22916667);
+    tone(tonePin, 1044, 250);  // C4→C6 - extended from 7.66ms
+    delay(250);
+    delay(355.208333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 22.46ms
+    delay(250);
+    delay(368.229166667);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 13.78ms
+    delay(250);
+    delay(365.104166667);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 10.21ms
+    delay(250);
+    tone(tonePin, 1564, 705.395833333);  // G4→G6 - kept original (already long)
+    delay(719.791666667);
+    delay(4.16666666667);
+    tone(tonePin, 1044, 1068.8125);  // C4→C6 - kept original (already long)
+    delay(1090.625);
+    delay(436.979166667);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 158.74ms
+    delay(250);
+    delay(427.083333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 116.38ms
+    delay(250);
+    delay(492.1875);
+    delay(631.770833333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 4.08ms
+    delay(250);
+    delay(383.854166667);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 6.13ms
+    delay(250);
+    tone(tonePin, 1316, 1441.92708333);  // E4→E6 - kept original (already long)
+    delay(1471.35416667);
+    delay(532.8125);
+    delay(345.833333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 15.31ms
+    delay(250);
+    delay(334.895833333);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 21.44ms
+    delay(250);
+    delay(318.229166667);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 22.46ms
+    delay(250);
+    delay(658.333333333);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 6.13ms
+    delay(250);
+    tone(tonePin, 1044, 959.583333333);  // C4→C6 - kept original (already long)
+    delay(979.166666667);
+    delay(15.625);
+    delay(352.083333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 7.66ms
+    delay(250);
+    delay(345.833333333);
+    delay(342.708333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 16.33ms
+    delay(250);
+    delay(654.166666667);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 5.10ms
+    delay(250);
+    tone(tonePin, 1044, 1248.47916667);  // C4→C6 - kept original (already long)
+    delay(1273.95833333);
+    delay(138.020833333);
+    tone(tonePin, 1316, 335.854166667);  // E4→E6 - kept original (already long)
+    delay(342.708333333);
+    delay(315.625);
+    tone(tonePin, 1316, 272.052083333);  // E4→E6 - kept original (already long)
+    delay(277.604166667);
+    delay(355.729166667);
+    delay(623.4375);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 7.66ms
+    delay(250);
+    delay(363.541666667);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 1.02ms
+    delay(250);
+    tone(tonePin, 1316, 1749.19791667);  // E4→E6 - kept original (already long)
+    delay(1784.89583333);
+    delay(1050.0);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 149.55ms
+    delay(250);
+    delay(145.833333333);
+    tone(tonePin, 1396, 556.354166667);  // F4→F6 - kept original (already long)
+    delay(567.708333333);
+    delay(4.16666666667);
+    tone(tonePin, 1760, 1349.54166667);  // A4→A6 - kept original (already long)
+    delay(1377.08333333);
+    delay(46.875);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 126.07ms
+    delay(250);
+    delay(205.208333333);
+    delay(573.958333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 10.72ms
+    delay(250);
+    tone(tonePin, 1564, 1316.875);  // G4→G6 - kept original (already long)
+    delay(1343.75);
+    delay(196.354166667);
+    tone(tonePin, 1564, 352.697916667);  // G4→G6 - kept original (already long)
+    delay(359.895833333);
+    delay(231.25);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 117.40ms
+    delay(250);
+    delay(195.3125);
+    delay(629.6875);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 17.86ms
+    delay(250);
+    delay(307.291666667);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 25.52ms
+    delay(250);
+    delay(298.958333333);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 22.46ms
+    delay(250);
+    tone(tonePin, 1396, 311.354166667);  // F4→F6 - kept original (already long)
+    delay(317.708333333);
+    delay(4.6875);
+    tone(tonePin, 1564, 1696.625);  // G4→G6 - kept original (already long)
+    delay(1731.25);
+    delay(552.604166667);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 135.77ms
+    delay(250);
+    delay(171.875);
+    tone(tonePin, 1396, 586.46875);  // F4→F6 - kept original (already long)
+    delay(598.4375);
+    delay(2.08333333333);
+    tone(tonePin, 1760, 1400.07291667);  // A4→A6 - kept original (already long)
+    delay(1428.64583333);
+    delay(11.9791666667);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 115.35ms
+    delay(250);
+    delay(177.604166667);
+    tone(tonePin, 1316, 598.71875);  // E4→E6 - kept original (already long)
+    delay(610.9375);
+    delay(17.7083333333);
+    tone(tonePin, 1564, 1225.51041667);  // G4→G6 - kept original (already long)
+    delay(1250.52083333);
+    delay(249.479166667);
+    tone(tonePin, 1564, 382.302083333);  // G4→G6 - kept original (already long)
+    delay(390.104166667);
+    delay(236.979166667);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 157.72ms
+    delay(250);
+    delay(168.229166667);
+    tone(tonePin, 1564, 433.854166667);  // G4→G6 - kept original (already long)
+    delay(442.708333333);
+    delay(160.416666667);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 139.34ms
+    delay(250);
+    delay(202.083333333);
+    tone(tonePin, 1564, 541.552083333);  // G4→G6 - kept original (already long)
+    delay(552.604166667);
+    delay(742.708333333);
+    delay(708.854166667);
+    tone(tonePin, 1172, 250);  // D4→D6 - extended from 2.55ms
+    delay(250);
+    tone(tonePin, 1564, 941.71875);  // G4→G6 - kept original (already long)
+    delay(960.9375);
+    delay(284.895833333);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 150.57ms
+    delay(250);
+    delay(177.604166667);
+    delay(617.708333333);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 8.68ms
+    delay(250);
+    tone(tonePin, 1760, 1390.88541667);  // A4→A6 - kept original (already long)
+    delay(1419.27083333);
+    delay(53.125);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 122.5ms
+    delay(250);
+    delay(200.520833333);
+    tone(tonePin, 1316, 582.385416667);  // E4→E6 - kept original (already long)
+    delay(594.270833333);
+    delay(13.5416666667);
+    tone(tonePin, 1564, 1281.65625);  // G4→G6 - kept original (already long)
+    delay(1307.8125);
+    delay(183.854166667);
+    tone(tonePin, 1564, 405.78125);  // G4→G6 - kept original (already long)
+    delay(414.0625);
+    delay(175.0);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 124.03ms
+    delay(250);
+    delay(176.5625);
+    delay(622.395833333);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 40.32ms
+    delay(250);
+    delay(271.354166667);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 34.20ms
+    delay(250);
+    delay(278.125);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 26.54ms
+    delay(250);
+    delay(282.8125);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 6.64ms
+    delay(250);
+    tone(tonePin, 1564, 1866.08333333);  // G4→G6 - kept original (already long)
+    delay(1904.16666667);
+    delay(494.270833333);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 166.91ms
+    delay(250);
+    delay(135.9375);
+    delay(555.729166667);
+    tone(tonePin, 1396, 250);  // F4→F6 - extended from 15.82ms
+    delay(250);
+    tone(tonePin, 1760, 1403.13541667);  // A4→A6 - kept original (already long)
+    delay(1431.77083333);
+    delay(30.7291666667);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 107.70ms
+    delay(250);
+    delay(210.416666667);
+    delay(615.625);
+    tone(tonePin, 1316, 250);  // E4→E6 - extended from 2.55ms
+    delay(250);
+    tone(tonePin, 1564, 1186.71875);  // G4→G6 - kept original (already long)
+    delay(1210.9375);
+    delay(272.395833333);
+    tone(tonePin, 1564, 383.322916667);  // G4→G6 - kept original (already long)
+    delay(391.145833333);
+    delay(195.833333333);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 169.46ms
+    delay(250);
+    delay(167.708333333);
+    tone(tonePin, 1564, 461.416666667);  // G4→G6 - kept original (already long)
+    delay(470.833333333);
+    delay(116.666666667);
+    tone(tonePin, 1564, 250);  // G4→G6 - extended from 172.01ms
+    delay(250);
+    delay(160.9375);
+    tone(tonePin, 1564, 305.229166667);  // G4→G6 - kept original (already long)
+    delay(311.458333333);
+    delay(971.875);
+    tone(tonePin, 1172, 663.541666667);  // D4→D6 - kept original (already long)
+    delay(677.083333333);
+    delay(5.20833333333);
+    tone(tonePin, 1564, 1816.57291667);  // G4→G6 - kept original (already long)
+    delay(1853.64583333);
+
 }
 
 void loop() {
-  checkButtons();
-  updateSong();
-  
-  // Check if LEDs should be shown based on light sensor and force enable status
-  if (shouldShowLEDs()) {
-    updatePatterns();
-  } else {
-    // Turn off LEDs when it's too bright (unless song is playing)
-    if (songState == IDLE) {
-      turnOffAllLEDs();
-    } else {
-      updatePatterns(); // Always show LEDs during song
-    }
-  }
-  
-  // Periodic monitoring
-  if (millis() - lastBatteryCheck > batteryCheckInterval) {
-    checkPowerSource();
-    lastBatteryCheck = millis();
-  }
-  
-  if (millis() - lastLDRCheck > LDR_CHECK_INTERVAL) {
-    checkLightSensor();
-    lastLDRCheck = millis();
-  }
-  
-  // Check force enable timeout
-  if (ledsForceEnabled && (millis() - forceEnableStartTime > forceEnableTimeout)) {
-    ledsForceEnabled = false;
-    Serial.println("Force enable timeout - returning to automatic light control");
-  }
-  
-  FastLED.show();
-}
-
-void checkPowerSource() {
-  // Read battery voltage (voltage divider gives us half the actual voltage)
-  int reading = analogRead(BATT_SENSE);
-  float voltage = (reading / 4095.0) * 3.3; // Convert to voltage
-  
-  PowerSource oldPowerSource = currentPowerSource;
-  
-  if (voltage < BATT_NO_DETECT) {
-    // No battery detected - running on USB
-    currentPowerSource = POWER_USB;
-    currentBrightness = BRIGHTNESS_USB;
-    wifiEnabled = true;
-  } else if (voltage >= BATT_CR2032_MIN && voltage <= BATT_CR2032_MAX) {
-    // CR2032 batteries detected
-    currentPowerSource = POWER_CR2032;
-    currentBrightness = BRIGHTNESS_BATTERY;
-    wifiEnabled = false;
-  } else if (voltage >= BATT_AAA_MIN && voltage <= BATT_AAA_MAX) {
-    // AAA batteries detected
-    currentPowerSource = POWER_AAA;
-    currentBrightness = BRIGHTNESS_BATTERY;
-    wifiEnabled = false;
-  } else {
-    // Unknown voltage - assume battery power for safety
-    currentPowerSource = POWER_AAA;
-    currentBrightness = BRIGHTNESS_BATTERY;
-    wifiEnabled = false;
-  }
-  
-  // Update brightness if power source changed
-  if (oldPowerSource != currentPowerSource) {
-    FastLED.setBrightness(currentBrightness);
-    printPowerStatus();
-    
-    // Disable WiFi/Bluetooth for battery operation
-    if (!wifiEnabled) {
-      // Add WiFi disable code here if needed
-      Serial.println("WiFi/Bluetooth disabled for battery operation");
-    }
-  }
-}
-
-void checkLightSensor() {
-  int ldrReading = analogRead(LDR_PIN);
-  
-  // Apply hysteresis to prevent flickering
-  if (!ledsEnabledByLight && ldrReading < (LDR_THRESHOLD - LDR_HYSTERESIS)) {
-    // It's getting dark enough - enable LEDs
-    ledsEnabledByLight = true;
-    Serial.print("Light level decreased to ");
-    Serial.print(ldrReading);
-    Serial.println(" - LEDs enabled");
-  } else if (ledsEnabledByLight && ldrReading > (LDR_THRESHOLD + LDR_HYSTERESIS)) {
-    // It's getting too bright - disable LEDs (unless force enabled)
-    ledsEnabledByLight = false;
-    Serial.print("Light level increased to ");
-    Serial.print(ldrReading);
-    Serial.println(" - LEDs disabled by light sensor");
-  }
-  
-  lastLDRReading = ldrReading;
-}
-
-bool shouldShowLEDs() {
-  // Always show LEDs during song playback
-  if (songState == PLAYING_SONG) {
-    return true;
-  }
-  
-  // Show LEDs if force enabled (button was pressed recently)
-  if (ledsForceEnabled) {
-    return true;
-  }
-  
-  // Otherwise follow light sensor
-  return ledsEnabledByLight;
-}
-
-void printPowerStatus() {
-  Serial.print("Power Source: ");
-  switch (currentPowerSource) {
-    case POWER_USB:
-      Serial.print("USB");
-      break;
-    case POWER_CR2032:
-      Serial.print("CR2032");
-      break;
-    case POWER_AAA:
-      Serial.print("AAA");
-      break;
-  }
-  Serial.print(", Brightness: ");
-  Serial.print((currentBrightness * 100) / 255);
-  Serial.print("%, Light Level: ");
-  Serial.print(lastLDRReading);
-  Serial.print(", LEDs: ");
-  Serial.println(shouldShowLEDs() ? "Enabled" : "Disabled");
-}
-
-void checkButtons() {
-  bool reading1 = digitalRead(BUTTON1);
-  bool reading2 = digitalRead(BUTTON2);
-
-  // Debounce logic
-  if (reading1 != lastButton1State || reading2 != lastButton2State) {
-    lastDebounceTime = millis();
-  }
-
-  if ((millis() - lastDebounceTime) > debounceDelay) {
-    // Button 1 - Change mode/color
-    if (reading1 != button1State) {
-      button1State = reading1;
-      if (button1State == LOW) {
-        handleButton1Press();
-      }
-    }
-
-    // Button 2 - Play song
-    if (reading2 != button2State) {
-      button2State = reading2;
-      if (button2State == LOW) {
-        handleButton2Press();
-      }
-    }
-  }
-
-  lastButton1State = reading1;
-  lastButton2State = reading2;
-}
-
-void handleButton1Press() {
-  // Enable LEDs temporarily when button is pressed (even in bright light)
-  if (!shouldShowLEDs()) {
-    ledsForceEnabled = true;
-    forceEnableStartTime = millis();
-    Serial.println("Button pressed - temporarily enabling LEDs");
-  }
-  
-  if (currentMode == STATIC_COLOR) {
-    currentColorIndex = (currentColorIndex + 1) % NUM_COLORS;
-    if (currentColorIndex == NUM_COLORS - 1) {
-      // After going through all colors, switch to first pattern mode
-      currentMode = RAINBOW_MODE;
-      Serial.println("Mode changed to RAINBOW");
-    } else {
-      Serial.print("Color changed to index: ");
-      Serial.println(currentColorIndex);
-    }
-  } else {
-    // Switch to next pattern mode
-    currentMode = (DisplayMode)((int)currentMode + 1);
-    if (currentMode > WAVE_MODE) {
-      currentMode = STATIC_COLOR;
-      currentColorIndex = 0;
-      Serial.println("Mode reset to STATIC_COLOR");
-    } else {
-      Serial.print("Mode changed to: ");
-      Serial.println((int)currentMode);
-    }
-  }
-  updateDisplay();
-}
-
-void handleButton2Press() {
-  // Songs always play regardless of light conditions
-  if (songState == IDLE) {
-    startSong();
-  } else {
-    stopSong();
-  }
-}
-
-void updatePatterns() {
-  unsigned long currentTime = millis();
-  
-  if (songState != IDLE) return; // Don't update patterns while playing song
-  
-  // Set update interval based on current mode
-  switch (currentMode) {
-    case RAINBOW_MODE:
-      patternUpdateInterval = RAINBOW_SPEED;
-      break;
-    case SNAKE_MODE:
-      patternUpdateInterval = SNAKE_SPEED;
-      break;
-    case CHASE_MODE:
-      patternUpdateInterval = CHASE_SPEED;
-      break;
-    case WAVE_MODE:
-      patternUpdateInterval = WAVE_SPEED;
-      break;
-    case BREATHE_MODE:
-      patternUpdateInterval = BREATHE_SPEED;
-      break;
-    case RANDOM_BLINK:
-      // Uses its own timing
-      break;
-    default:
-      patternUpdateInterval = 50;
-      break;
-  }
-  
-  if (currentTime - lastPatternUpdate >= patternUpdateInterval) {
-    lastPatternUpdate = currentTime;
-    
-    switch (currentMode) {
-      case STATIC_COLOR:
-        // No animation needed
-        break;
-      case RAINBOW_MODE:
-        updateRainbowPattern();
-        break;
-      case SNAKE_MODE:
-        updateSnakePattern();
-        break;
-      case RANDOM_BLINK:
-        updateRandomBlinkPattern(currentTime);
-        break;
-      case CHASE_MODE:
-        updateChasePattern();
-        break;
-      case BREATHE_MODE:
-        updateBreathePattern();
-        break;
-      case WAVE_MODE:
-        updateWavePattern();
-        break;
-      case OFF_MODE:
-        turnOffAllLEDs();
-        break;
-    }
-  }
-}
-
-void updateRainbowPattern() {
-  breatheHue++;
-  for (int i = 0; i < NUM_LEDS; i++) {
-    leds[i] = CHSV(breatheHue + (i * 255 / NUM_LEDS), 255, 255);
-  }
-}
-
-void updateSnakePattern() {
-  turnOffAllLEDs();
-  
-  snakeHeadPos = (snakeHeadPos + 1) % NUM_LEDS;
-  snakeHue += 2;
-  
-  for (int i = 0; i < snakeLength; i++) {
-    int pos = (snakeHeadPos - i + NUM_LEDS) % NUM_LEDS;
-    int brightness = 255 - (i * 255 / snakeLength);
-    leds[pos] = CHSV(snakeHue, 255, brightness);
-  }
-}
-
-void updateRandomBlinkPattern(unsigned long currentTime) {
-  if (currentTime - lastRandomUpdate >= randomBlinkInterval) {
-    lastRandomUpdate = currentTime;
-    
-    // Turn off old random LEDs
-    for (int i = 0; i < 3; i++) {
-      if (randomLEDs[i] < NUM_LEDS) {
-        leds[randomLEDs[i]] = CRGB::Black;
-      }
-    }
-    
-    // Generate new random LEDs
-    for (int i = 0; i < 3; i++) {
-      randomLEDs[i] = random8(0, NUM_LEDS);
-      randomHues[i] = random8(0, 255);
-      leds[randomLEDs[i]] = CHSV(randomHues[i], 255, 255);
-    }
-  }
-}
-
-void updateChasePattern() {
-  turnOffAllLEDs();
-  
-  leds[chasePos] = CHSV(chaseHue, 255, 255);
-  
-  chasePos = (chasePos + 1) % NUM_LEDS;
-  chaseHue += 10;
-}
-
-void updateBreathePattern() {
-  if (breatheIncreasing) {
-    breatheBrightness += 3;
-    if (breatheBrightness >= 250) {
-      breatheIncreasing = false;
-    }
-  } else {
-    breatheBrightness -= 3;
-    if (breatheBrightness <= 5) {
-      breatheIncreasing = true;
-      breatheHue += 10;
-    }
-  }
-  
-  fill_solid(leds, NUM_LEDS, CHSV(breatheHue, 255, breatheBrightness));
-}
-
-void updateWavePattern() {
-  waveOffset += 10;
-  
-  for (int i = 0; i < NUM_LEDS; i++) {
-    uint8_t sinBrightness = sin8(waveOffset + (i * 255 / NUM_LEDS));
-    leds[i] = CHSV(waveHue, 255, sinBrightness);
-  }
-  
-  waveHue++;
-}
-
-void turnOffAllLEDs() {
-  fill_solid(leds, NUM_LEDS, CRGB::Black);
-}
-
-void updateDisplay() {
-  if (songState != IDLE) return; // Don't change display while playing song
-  
-  // Only update display if LEDs should be shown
-  if (!shouldShowLEDs()) {
-    turnOffAllLEDs();
-    return;
-  }
-  
-  turnOffAllLEDs();
-  
-  switch (currentMode) {
-    case STATIC_COLOR:
-      fill_solid(leds, NUM_LEDS, colorOptions[currentColorIndex]);
-      break;
-    case SNAKE_MODE:
-      snakeHeadPos = 0;
-      snakeHue = random8(0, 255);
-      break;
-    case RANDOM_BLINK:
-      for (int i = 0; i < 3; i++) {
-        randomLEDs[i] = random8(0, NUM_LEDS);
-        randomHues[i] = random8(0, 255);
-      }
-      break;
-    case CHASE_MODE:
-      chasePos = 0;
-      chaseHue = random8(0, 255);
-      break;
-    case BREATHE_MODE:
-      breatheBrightness = 0;
-      breatheIncreasing = true;
-      breatheHue = random8(0, 255);
-      break;
-    case WAVE_MODE:
-      waveOffset = 0;
-      waveHue = random8(0, 255);
-      break;
-    default:
-      break;
-  }
-}
-
-void startSong() {
-  currentNote = 0;
-  ledsLit = 0;
-  songState = PLAYING_SONG;
-  previousNoteTime = millis();
-  noteIsPlaying = false;
-  turnOffAllLEDs();
-  
-  // Select color based on current mode
-  if (currentMode != STATIC_COLOR) {
-    currentColorIndex = random8(0, NUM_COLORS - 1); // Avoid black
-  }
-  
-  Serial.println("Starting Kinderdorp song");
-}
-
-void stopSong() {
-  songState = IDLE;
-  noTone(BUZZER);
-  updateDisplay();
-  Serial.println("Song stopped");
-}
-
-void updateSong() {
-  if (songState != PLAYING_SONG) return;
-  
-  unsigned long currentTime = millis();
-
-  if (!noteIsPlaying && currentTime >= previousNoteTime) {
-    if (currentNote < melodyLength) {
-      // Play note (skip REST notes)
-      if (melody[currentNote] != REST) {
-        noteDuration = (tempo * 4 / noteDurationFractions[currentNote]);
-        pauseDuration = noteDuration * 0.2; // Shorter pause between notes for flow
-        tone(BUZZER, melody[currentNote], noteDuration);
-      } else {
-        // Handle REST note - 0.5 second pause
-        noteDuration = 500; // 0.5 seconds in milliseconds
-        pauseDuration = 0;   // No additional pause after REST
-      }
-
-      // Light LEDs progressively
-      float ledsPerNote = (float)(NUM_LEDS) / melodyLength;
-      int targetLEDs = round((currentNote + 1) * ledsPerNote);
-
-      while (ledsLit < targetLEDs && ledsLit < NUM_LEDS) {
-        leds[ledsLit] = colorOptions[currentColorIndex];
-        ledsLit++;
-      }
-
-      noteEndTime = currentTime + noteDuration;
-      noteIsPlaying = true;
-    } else {
-      // Song complete
-      fill_solid(leds, NUM_LEDS, colorOptions[currentColorIndex]);
-      delay(1000);
-      songState = IDLE;
-      updateDisplay();
-      Serial.println("Song finished");
-    }
-  } else if (noteIsPlaying && currentTime >= noteEndTime) {
-    noteIsPlaying = false;
-    currentNote++;
-    previousNoteTime = currentTime + pauseDuration;
-  }
+    // Play midi
+    midi();
 }
