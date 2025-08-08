@@ -127,10 +127,10 @@ void Kinderdorplied() {
   delay (QUARTER);
 
   // Kinderdorp is echt... OK!
-  tone(BUZZER_PIN, NOTE_G4, QUARTER); delay(QUARTER);
-  tone(BUZZER_PIN, NOTE_G4, EIGHTH); delay(QUARTER);
-  tone(BUZZER_PIN, NOTE_G4, QUARTER); delay(QUARTER);
-  tone(BUZZER_PIN, NOTE_G4, EIGHTH); delay(QUARTER);
+  tone(BUZZER_PIN, NOTE_G4, SIXTEENTH); delay(QUARTER);
+  tone(BUZZER_PIN, NOTE_G4, SIXTEENTH); delay(EIGHTH);
+  tone(BUZZER_PIN, NOTE_G4, SIXTEENTH); delay(QUARTER);
+  tone(BUZZER_PIN, NOTE_G4, SIXTEENTH); delay(EIGHTH);
   tone(BUZZER_PIN, NOTE_G4, QUARTER); delay(HALF);
   tone(BUZZER_PIN, NOTE_D4, QUARTER); delay(SIXTEENTH);
   tone(BUZZER_PIN, NOTE_G4, HALF); delay(HALF);
