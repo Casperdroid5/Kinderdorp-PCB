@@ -42,7 +42,7 @@ void Kinderdorplied() {
   tone(BUZZER_PIN, NOTE_E4, EIGHTH); delay(QUARTER);
   tone(BUZZER_PIN, NOTE_D4, SIXTEENTH); delay(EIGHTH);
   tone(BUZZER_PIN, NOTE_E4, HALF); delay(QUARTER);
-  delay(QUARTER);
+  delay(HALF);
   
   // Second verse - repeat
   tone(BUZZER_PIN, NOTE_E4, SIXTEENTH); delay(EIGHTH);
@@ -64,7 +64,7 @@ void Kinderdorplied() {
   tone(BUZZER_PIN, NOTE_E4, EIGHTH); delay(QUARTER);
   tone(BUZZER_PIN, NOTE_D4, SIXTEENTH); delay(EIGHTH);
   tone(BUZZER_PIN, NOTE_E4, HALF); delay(QUARTER);
-  delay(QUARTER);
+  delay(HALF);
   
   // Hutje hier,
   tone(BUZZER_PIN, NOTE_F4, SIXTEENTH); delay(EIGHTH);
