@@ -2,12 +2,14 @@
 #include <FastLED.h>
 
 // Hardware Configuration - Updated for new PCB
+const int BUZZER = 10;      // Buzzer pin (GPIO10)
 #define RGB_PIN 1      // Data pin for LED strip (GPIO1)
-#define BUZZER 10      // Buzzer pin (GPIO10)
+
+#include "kinderdorp_song.h"  // Include after BUZZER definition
 #define BUTTON1 4      // Button 1 pin (GPIO4) - change color/pattern
 #define BUTTON2 5      // Button 2 pin (GPIO5) - play song
-#define BATT_SENSE 3   // Battery voltage sensing pin (GPIO3)
-#define LDR_PIN 6      // Light sensor pin (GPIO6)
+#define BATT_SENSE 0   // Battery voltage sensing pin (GPIO0)
+#define LDR_PIN 2      // Light sensor pin (GPIO2)
 #define NUM_LEDS 8     // Total number of LEDs (based on schematic)
 
 // Battery voltage thresholds (after voltage divider: actual voltage = reading * 2)
@@ -116,41 +118,8 @@ uint8_t breatheHue = 0;
 uint8_t waveOffset = 0;
 uint8_t waveHue = 0;
 
-// Music Notes (pitches.h equivalent)
-#define NOTE_C4  262
-#define NOTE_D4  294
-#define NOTE_E4  330
-#define NOTE_F4  349
-#define NOTE_G4  392
-#define NOTE_A4  440
-#define NOTE_B4  494
-#define NOTE_C5  523
-#define NOTE_D5  587
-#define NOTE_E5  659
-#define NOTE_F5  698
-#define NOTE_G5  784
-#define REST     0
-
-// Quantized durations (in ms) - from your corrected version
-#define SIXTEENTH 125
-#define EIGHTH 250
-#define QUARTER 500
-#define HALF 1000
-#define WHOLE 2000
-
-// Song State Machine
-enum SongState {
-  IDLE,
-  PLAYING_SONG
-};
-SongState songState = IDLE;
-
-// Song timing variables
-unsigned long songStepStartTime = 0;
-unsigned long songDelayEnd = 0;
-int songStep = 0;
-bool noteCurrentlyPlaying = false;
-bool inDelay = false;
+// Song State and Variables (implemented in kinderdorp_song.cpp)
+// Variables are declared as extern in kinderdorp_song.h
 
 // Battery monitoring
 unsigned long lastBatteryCheck = 0;
@@ -178,10 +147,7 @@ void updateWavePattern();
 void turnOffAllLEDs();
 void updateDisplay();
 void startSong();
-void stopSong();
 void updateSong();
-void playKinderdorpSong();
-
 void setup() {
   Serial.begin(115200);
   Serial.println("Kinderdorp PCB Starting...");
@@ -602,293 +568,33 @@ void updateDisplay() {
   }
 }
 
+// Song functionality with LED integration
 void startSong() {
-  songStep = 0;
-  songState = PLAYING_SONG;
-  songStepStartTime = millis();
-  noteCurrentlyPlaying = false;
-  inDelay = false;
-  turnOffAllLEDs();
-  
-  // Select color based on current mode
-  if (currentMode != STATIC_COLOR) {
-    currentColorIndex = random8(0, NUM_COLORS - 1); // Avoid black
-  }
-  
-  Serial.println("Starting Kinderdorp song");
-}
-
-void stopSong() {
-  songState = IDLE;
-  noTone(BUZZER);
-  updateDisplay();
-  Serial.println("Song stopped");
-}
-
-void updateSong() {
-  if (songState != PLAYING_SONG) return;
-  
-  unsigned long currentTime = millis();
-  
-  // Handle delay periods
-  if (inDelay) {
-    if (currentTime >= songDelayEnd) {
-      inDelay = false;
-      songStep++;
+    turnOffAllLEDs();
+    
+    // Select color based on current mode
+    if (currentMode != STATIC_COLOR) {
+        currentColorIndex = random8(0, NUM_COLORS - 1); // Avoid black
     }
-    return;
-  }
-  
-  // Execute the current song step
-  playKinderdorpSong();
-  
-  // Progressive LED lighting during song
-  float progress = (float)songStep / 155.0; // Total song steps
-  int ledsToLight = (int)(progress * NUM_LEDS);
-  if (ledsToLight > NUM_LEDS) ledsToLight = NUM_LEDS;
-  
-  for (int i = 0; i < ledsToLight; i++) {
-    leds[i] = colorOptions[currentColorIndex];
-  }
+    
+    initSong();  // Call the base implementation from kinderdorp_song.cpp
 }
 
-void playKinderdorpSong() {
-  // Complete Kinderdorp song implementation based on your corrected version
-  unsigned long currentTime = millis();
-  
-  switch (songStep) {
-    // First verse - repeat
-    // Edegc
-    case 0: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 1: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 2: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 3: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 4: tone(BUZZER, NOTE_C4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 5: songDelayEnd = currentTime + EIGHTH; inDelay = true; break; // Pause
+// Song update with LED-specific functionality
+void updateSong() {
+    if (songState != PLAYING_SONG) return;
     
-    // Edegc
-    case 6: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 7: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 8: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 9: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 10: tone(BUZZER, NOTE_C4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 11: songDelayEnd = currentTime + EIGHTH; inDelay = true; break; // Pause
+    updateSongCore();  // Call the base implementation from kinderdorp_song.cpp
     
-    // Eede
-    case 12: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 13: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 14: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 15: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 16: tone(BUZZER, NOTE_E4, HALF); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 17: songDelayEnd = currentTime + HALF; inDelay = true; break; // Long pause
+    // Progressive LED lighting during song
+    float progress = (float)songStep / 162.0; // Total song steps
+    int ledsToLight = (int)(progress * NUM_LEDS);
+    if (ledsToLight > NUM_LEDS) ledsToLight = NUM_LEDS;
     
-    // Second verse - repeat
-    // Edegc
-    case 18: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 19: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 20: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 21: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 22: tone(BUZZER, NOTE_C4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 23: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
+    for (int i = 0; i < ledsToLight; i++) {
+        leds[i] = colorOptions[currentColorIndex];
+    }
     
-    // Edegc
-    case 24: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 25: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 26: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 27: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 28: tone(BUZZER, NOTE_C4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 29: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Eede
-    case 30: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 31: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 32: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 33: tone(BUZZER, NOTE_D4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 34: tone(BUZZER, NOTE_E4, HALF); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 35: songDelayEnd = currentTime + HALF; inDelay = true; break; // Long pause
-    
-    // Hutje hier,
-    case 36: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 37: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 38: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 39: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Hutje daar,
-    case 40: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 41: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 42: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 43: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is bijna klaar
-    case 44: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 45: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 46: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 47: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 48: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 49: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 50: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 51: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Groot en klein,
-    case 52: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 53: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 54: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 55: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Zing maar mee,
-    case 56: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 57: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 58: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 59: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is echt... OK!
-    case 60: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 61: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 62: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 63: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 64: tone(BUZZER, NOTE_G4, QUARTER); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 65: tone(BUZZER, NOTE_D4, QUARTER); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 66: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 67: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Repeat chorus: Hutje hier,
-    case 68: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 69: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 70: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 71: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Hutje daar,
-    case 72: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 73: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 74: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 75: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is bijna klaar
-    case 76: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 77: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 78: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 79: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 80: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 81: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 82: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 83: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Groot en klein,
-    case 84: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 85: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 86: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 87: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Zing maar mee,
-    case 88: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 89: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 90: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 91: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is echt... OK!
-    case 92: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 93: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 94: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 95: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 96: tone(BUZZER, NOTE_G4, QUARTER); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 97: tone(BUZZER, NOTE_D4, QUARTER); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 98: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 99: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Third repeat chorus: Hutje hier,
-    case 100: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 101: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 102: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 103: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Hutje daar,
-    case 104: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 105: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 106: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 107: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is bijna klaar
-    case 108: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 109: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 110: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 111: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 112: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 113: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 114: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 115: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Groot en klein,
-    case 116: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 117: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 118: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 119: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Zing maar mee,
-    case 120: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 121: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 122: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 123: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Final: Kinderdorp is echt... OK! (extended ending)
-    case 124: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 125: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 126: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 127: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 128: tone(BUZZER, NOTE_G4, QUARTER); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 129: tone(BUZZER, NOTE_D4, QUARTER); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 130: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 131: songDelayEnd = currentTime + WHOLE; inDelay = true; break; // Long final pause
-    
-    // Fourth and final repeat chorus: Hutje hier,
-    case 132: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 133: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 134: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 135: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Hutje daar,
-    case 136: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 137: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 138: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 139: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Kinderdorp is bijna klaar
-    case 140: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 141: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 142: tone(BUZZER, NOTE_G4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 143: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 144: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 145: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 146: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 147: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Groot en klein,
-    case 148: tone(BUZZER, NOTE_F4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 149: tone(BUZZER, NOTE_F4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 150: tone(BUZZER, NOTE_A4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 151: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Zing maar mee,
-    case 152: tone(BUZZER, NOTE_E4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 153: tone(BUZZER, NOTE_E4, EIGHTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 154: tone(BUZZER, NOTE_G4, HALF); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 155: songDelayEnd = currentTime + QUARTER; inDelay = true; break; // Pause
-    
-    // Grand finale: Kinderdorp is echt... OK!
-    case 156: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 157: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 158: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + QUARTER; inDelay = true; break;
-    case 159: tone(BUZZER, NOTE_G4, SIXTEENTH); songDelayEnd = currentTime + EIGHTH; inDelay = true; break;
-    case 160: tone(BUZZER, NOTE_G4, QUARTER); songDelayEnd = currentTime + HALF; inDelay = true; break;
-    case 161: tone(BUZZER, NOTE_D4, QUARTER); songDelayEnd = currentTime + SIXTEENTH; inDelay = true; break;
-    case 162: tone(BUZZER, NOTE_G4, WHOLE); songDelayEnd = currentTime + WHOLE; inDelay = true; break; // Extended final note
-    
-    default:
-      // Song complete
-      fill_solid(leds, NUM_LEDS, colorOptions[currentColorIndex]);
-      delay(2000);
-      songState = IDLE;
-      updateDisplay();
-      Serial.println("Kinderdorp song finished");
-      break;
-  }
+    // Make sure to show the LED updates
+    FastLED.show();
 }
