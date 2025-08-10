@@ -3452,150 +3452,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "easyeda2kicad:MY-2032-12"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "BT"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MY-2032-12"
-				(at 0 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "easyeda2kicad:BAT-SMD_MY-2032-12"
-				(at 0 -7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "LCSC Part" "C964833"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MY-2032-12_0_1"
-				(polyline
-					(pts
-						(xy -1.27 2.29) (xy -1.27 -1.78)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 1.27) (xy -0.51 -1.02)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.25 2.29) (xy 0.25 -1.78)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.02 1.27) (xy 1.02 -1.02)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin input line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 5.08 0 180)
-					(length 3.81)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "easyeda2kicad:TYPE-C6P(073)"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3963,7 +3819,7 @@
 		)
 		(uuid "61a98f99-6065-45ba-a098-78095b837f6c")
 	)
-	(text "Populate with either\n2*CR2032\nOR\n3/4*AAA\nBattery holders"
+	(text "Populate with \n3 or 4*AAA\nBattery holders"
 		(exclude_from_sim no)
 		(at 15.748 76.2 0)
 		(effects
@@ -4096,12 +3952,6 @@
 		(uuid "564ba987-176d-4d25-9732-8de34a21c8f3")
 	)
 	(junction
-		(at 45.72 100.33)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5bc5567d-7613-4cfc-9663-32184ff70a15")
-	)
-	(junction
 		(at 110.49 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4130,12 +3980,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9b36e3c8-b96f-4a35-9356-df033b28541f")
-	)
-	(junction
-		(at 45.72 74.93)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b479a427-fd73-429b-957b-5f4493e77fad")
 	)
 	(junction
 		(at 250.19 83.82)
@@ -4502,16 +4346,6 @@
 			(type default)
 		)
 		(uuid "28c9ad82-eb79-4186-a566-e578b40f8f7c")
-	)
-	(wire
-		(pts
-			(xy 45.72 80.01) (xy 45.72 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2af51433-07c1-4fcb-a1f2-2fbf56697501")
 	)
 	(wire
 		(pts
@@ -5325,16 +5159,6 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 74.93) (xy 62.23 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c49d58b4-9fd4-4745-8547-89fd31e02734")
-	)
-	(wire
-		(pts
 			(xy 71.12 33.02) (xy 71.12 29.21)
 		)
 		(stroke
@@ -5585,7 +5409,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 74.93) (xy 45.72 74.93)
+			(xy 43.18 74.93) (xy 62.23 74.93)
 		)
 		(stroke
 			(width 0)
@@ -7472,157 +7296,6 @@
 		)
 	)
 	(symbol
-		(lib_id "easyeda2kicad:MY-2032-12")
-		(at 45.72 95.25 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1faf9495-e536-49ad-8822-253ccb1332f9")
-		(property "Reference" "BT2"
-			(at 49.53 94.6149 90)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MY-2032-12"
-			(at 49.53 95.8849 90)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:BAT-SMD_MY-2032-12"
-			(at 38.1 95.25 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 45.72 95.25 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 45.72 95.25 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C964833"
-			(at 35.56 95.25 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 45.72 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6615d8b4-bf54-439f-804a-ea35c22b4e33")
-		)
-		(pin "2"
-			(uuid "e38f3086-5525-4b2d-bb56-0328d869b69f")
-		)
-		(instances
-			(project "Kinderdorp_PCB"
-				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BT2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "easyeda2kicad:TYPE-C6P(073)")
 		(at 49.53 35.56 180)
 		(unit 1)
@@ -9105,157 +8778,6 @@
 			(project "Kinderdorp_PCB"
 				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
 					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "easyeda2kicad:MY-2032-12")
-		(at 45.72 85.09 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "35536f34-4349-4430-8d32-7efd22fa722b")
-		(property "Reference" "BT1"
-			(at 49.53 84.4549 90)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MY-2032-12"
-			(at 49.53 85.7249 90)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "easyeda2kicad:BAT-SMD_MY-2032-12"
-			(at 38.1 85.09 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 45.72 85.09 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 45.72 85.09 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC Part" "C964833"
-			(at 35.56 85.09 0)
-			(effects
-				(font
-					(size 0.75 0.75)
-				)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 45.72 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6c91ab71-58d5-4aa4-b14c-47b48a8e7bd4")
-		)
-		(pin "2"
-			(uuid "e3e4a6b6-aad7-4f08-8c73-15daf1fa553f")
-		)
-		(instances
-			(project "Kinderdorp_PCB"
-				(path "/17f7643f-a16b-4802-8051-c0810a7f40c9"
-					(reference "BT1")
 					(unit 1)
 				)
 			)
