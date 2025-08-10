@@ -22,7 +22,7 @@ const int BUZZER = 10;      // Buzzer pin (GPIO10)
 #define BRIGHTNESS_BATTERY 60  // 25% brightness for battery power (60/255 = 25%)
 
 // LDR Configuration
-#define LDR_THRESHOLD 2000      // Light threshold (0-4095) - adjust based on testing
+#define LDR_THRESHOLD 3500      // Higher threshold - LEDs stay on in most conditions
 #define LDR_HYSTERESIS 200      // Prevents flickering by adding hysteresis
 #define LDR_CHECK_INTERVAL 1000 // Check LDR every 1 second
 
@@ -46,9 +46,7 @@ PowerSource currentPowerSource = POWER_USB;
 int currentBrightness = BRIGHTNESS_USB;
 bool wifiEnabled = true;
 
-// Light Sensor Management
-bool ledsEnabledByLight = true;  // LEDs enabled by light sensor
-unsigned long lastLDRCheck = 0;
+// Light Sensor Management (LDR reading only for status display)
 int lastLDRReading = 0;
 
 // Display Mode Enum
@@ -173,7 +171,6 @@ const unsigned long batteryCheckInterval = 10000; // Check every 10 seconds
 
 // Function prototypes
 void checkPowerSource();
-void checkLightSensor();
 bool shouldShowLEDs();
 void printPowerStatus();
 void checkButtons();
@@ -207,9 +204,8 @@ void setup() {
   pinMode(BATT_SENSE, INPUT);
   pinMode(LDR_PIN, INPUT);
   
-  // Check initial power source and light conditions
+  // Check initial power source
   checkPowerSource();
-  checkLightSensor();
   
   // Initialize LEDs with appropriate brightness
   FastLED.addLeds<WS2812B, RGB_PIN, GRB>(leds, NUM_LEDS);
@@ -316,11 +312,6 @@ void loop() {
     lastBatteryCheck = millis();
   }
   
-  if (millis() - lastLDRCheck > LDR_CHECK_INTERVAL) {
-    checkLightSensor();
-    lastLDRCheck = millis();
-  }
-  
   FastLED.show();
 }
 
@@ -361,31 +352,9 @@ void checkPowerSource() {
   }
 }
 
-void checkLightSensor() {
-  int ldrReading = analogRead(LDR_PIN);
-  
-  // Apply hysteresis to prevent flickering
-  if (!ledsEnabledByLight && ldrReading < (LDR_THRESHOLD - LDR_HYSTERESIS)) {
-    // It's getting dark enough - enable LEDs
-    ledsEnabledByLight = true;
-    Serial.println("LEDs ON");
-  } else if (ledsEnabledByLight && ldrReading > (LDR_THRESHOLD + LDR_HYSTERESIS)) {
-    // It's getting too bright - disable LEDs (unless force enabled)
-    ledsEnabledByLight = false;
-    Serial.println("LEDs OFF");
-  }
-  
-  lastLDRReading = ldrReading;
-}
-
 bool shouldShowLEDs() {
-  // Always show LEDs during song playback
-  if (songState == PLAYING_SONG) {
-    return true;
-  }
-  
-  // Follow light sensor only
-  return ledsEnabledByLight;
+  // Always show LEDs unless in OFF_MODE
+  return currentMode != OFF_MODE;
 }
 
 void printPowerStatus() {
