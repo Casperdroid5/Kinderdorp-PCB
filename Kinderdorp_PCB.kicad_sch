@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "Kinderdorp_PCB")
-		(date "2025-07-27")
-		(rev "V1.0")
+		(date "2025-08-10")
+		(rev "V1.1")
 		(comment 1 "Casper R. Tak")
 	)
 	(lib_symbols
@@ -4216,6 +4216,10 @@
 		(uuid "4a28d61e-c6d2-4386-9112-7d2259f04790")
 	)
 	(no_connect
+		(at 254 44.45)
+		(uuid "a7f0ce5d-f38f-4496-95e0-62ad4e480e81")
+	)
+	(no_connect
 		(at 254 46.99)
 		(uuid "c287cae2-5abd-43e4-89bd-af89c85d556f")
 	)
@@ -5764,28 +5768,6 @@
 			)
 		)
 	)
-	(global_label "SDO"
-		(shape input)
-		(at 254 41.91 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1f08697c-f355-43b1-9e1d-224c8b293587")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.2048 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "BATT_V"
 		(shape output)
 		(at 66.04 86.36 0)
@@ -5848,28 +5830,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SDA"
-		(shape input)
-		(at 254 44.45 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "528483e9-5728-4921-baa4-2977ea84d78c")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.4467 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -6063,6 +6023,28 @@
 		(uuid "95d79bc7-0bba-47a5-873b-3bcfc426c731")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 159.0305 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape input)
+		(at 254 41.91 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "991a1c27-e6d3-46a2-9288-f1f5c159bc6c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.4467 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
