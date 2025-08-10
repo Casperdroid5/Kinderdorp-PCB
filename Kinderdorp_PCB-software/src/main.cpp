@@ -1,5 +1,9 @@
 #include <Arduino.h>  // Required for PlatformIO
 #include <FastLED.h>
+#include <Preferences.h>
+
+// Preferences object for storing settings
+Preferences preferences;
 
 // Hardware Configuration - Updated for new PCB
 const int BUZZER = 10;      // Buzzer pin (GPIO10)
@@ -19,10 +23,10 @@ const int BUZZER = 10;      // Buzzer pin (GPIO10)
 
 // Brightness levels based on power source - matching Christmas lights
 #define BRIGHTNESS_USB 128     // 50% brightness for USB power (128/255 = 50%)
-#define BRIGHTNESS_BATTERY 60  // 25% brightness for battery power (60/255 = 25%)
+#define BRIGHTNESS_BATTERY 40  // 15% brightness for battery power (40/255 = 15%)
 
 // LDR Configuration
-#define LDR_THRESHOLD 3500      // Higher threshold - LEDs stay on in most conditions
+#define LDR_THRESHOLD 1200      // Lower threshold - considered dark below this value
 #define LDR_HYSTERESIS 200      // Prevents flickering by adding hysteresis
 #define LDR_CHECK_INTERVAL 1000 // Check LDR every 1 second
 
@@ -169,6 +173,16 @@ bool needNewFadeTarget = true;
 unsigned long lastBatteryCheck = 0;
 const unsigned long batteryCheckInterval = 10000; // Check every 10 seconds
 
+// Settings and Uptime Management
+bool settingsChanged = false;
+unsigned long lastSaveTime = 0;
+const unsigned long saveInterval = 30000; // Save every 30 seconds if needed
+
+// Uptime tracking (64-bit for extended duration)
+uint32_t totalUptimeLow = 0;   // Lower 32 bits of uptime in seconds
+uint32_t totalUptimeHigh = 0;  // Upper 32 bits of uptime in seconds
+unsigned long lastMillisCheck = 0; // For millis() overflow detection
+
 // Function prototypes
 void checkPowerSource();
 bool shouldShowLEDs();
@@ -193,6 +207,83 @@ void turnOffAllLEDs();
 void updateDisplay();
 void startSong();
 void updateSong();
+void markSettingsChanged();
+void saveToMemory();
+void loadSettings();
+
+// Function to mark settings as changed
+void markSettingsChanged() {
+    settingsChanged = true;
+}
+
+// Combined function to save settings and uptime if needed
+void saveToMemory() {
+    unsigned long currentMillis = millis();
+    
+    // Check for millis() overflow
+    if (currentMillis < lastSaveTime) {
+        // millis() has overflowed, force a save
+        lastSaveTime = currentMillis;
+    }
+    
+    // Only save if enough time has passed since last save and changes exist
+    if (currentMillis - lastSaveTime >= saveInterval && settingsChanged) {
+        preferences.begin("kinderdorp", false);  // Open preferences in RW mode
+        
+        // Save settings
+        preferences.putUChar("displayMode", (uint8_t)currentMode);
+        preferences.putUChar("colorIndex", currentColorIndex);
+        
+        // Save 64-bit uptime as two 32-bit values
+        preferences.putULong("uptimeLow", totalUptimeLow);
+        preferences.putULong("uptimeHigh", totalUptimeHigh);
+        
+        preferences.end();
+        
+        lastSaveTime = currentMillis;
+        settingsChanged = false;
+        Serial.println("Settings and uptime saved to memory");
+    }
+}
+
+// Function to load settings from non-volatile memory
+void loadSettings() {
+  preferences.begin("kinderdorp", true);  // Open preferences in read-only mode
+  
+  // Load display mode with STATIC_COLOR as default
+  currentMode = (DisplayMode)preferences.getUChar("displayMode", STATIC_COLOR);
+  
+  // Load color index with 0 (Red) as default
+  currentColorIndex = preferences.getUChar("colorIndex", 0);
+  
+  // Load 64-bit uptime from two 32-bit values
+  totalUptimeLow = preferences.getULong("uptimeLow", 0);
+  totalUptimeHigh = preferences.getULong("uptimeHigh", 0);
+  
+  preferences.end();
+  
+  // Initialize millis() overflow detection
+  lastMillisCheck = millis();
+  
+  Serial.println("Settings loaded from memory:");
+  Serial.print("Display Mode: ");
+  Serial.println((int)currentMode);
+  Serial.print("Color Index: ");
+  Serial.println(currentColorIndex);
+  
+  // Calculate total seconds for display
+  uint64_t totalSeconds = ((uint64_t)totalUptimeHigh << 32) | totalUptimeLow;
+  Serial.print("Total Device Uptime: ");
+  Serial.print(totalSeconds / 86400); // Days
+  Serial.print(" days, ");
+  Serial.print((totalSeconds % 86400) / 3600); // Hours
+  Serial.print(" hours, ");
+  Serial.print((totalSeconds % 3600) / 60); // Minutes
+  Serial.print(" minutes, ");
+  Serial.print(totalSeconds % 60); // Seconds
+  Serial.println(" seconds");
+}
+
 void setup() {
   Serial.begin(115200);
   Serial.println("Starting...");
@@ -211,6 +302,9 @@ void setup() {
   FastLED.addLeds<WS2812B, RGB_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(currentBrightness);
   
+  // Load saved settings from memory
+  loadSettings();
+  
   // Initial state
   updateDisplay();
   
@@ -222,8 +316,29 @@ void loop() {
   static unsigned long lastHeartbeat = 0;
   static unsigned long sessionUptime = 0;
   
-  // Heartbeat message every 3 seconds with prettier formatting
+  // Check for uptime overflow and update running total
   unsigned long currentMillis = millis();
+  if (currentMillis < lastMillisCheck) {
+    // Overflow detected - add the previous maximum value
+    unsigned long long newTime = (unsigned long long)totalUptimeLow + 0xFFFFFFFF;
+    if (newTime < (unsigned long long)totalUptimeLow) {
+      // Overflow in low part, increment high part
+      totalUptimeHigh++;
+      totalUptimeLow = currentMillis;
+    } else {
+      totalUptimeLow = (unsigned long)newTime;
+    }
+  }
+  lastMillisCheck = currentMillis;
+  
+  // Save settings every 30 seconds if changed
+  static unsigned long lastSaveTime = 0;
+  if (settingsChanged && (currentMillis - lastSaveTime) > 30000) {
+    saveToMemory();
+    lastSaveTime = currentMillis;
+  }
+  
+  // Heartbeat message every 3 seconds with prettier formatting
   if (currentMillis - lastHeartbeat >= 3000) {
     sessionUptime += 3;
     lastHeartbeat = currentMillis;
@@ -429,6 +544,9 @@ void handleButton1Press() {
       Serial.println((int)currentMode);
     }
   }
+  
+  // Mark settings as changed for memory save
+  markSettingsChanged();
   updateDisplay();
 }
 
